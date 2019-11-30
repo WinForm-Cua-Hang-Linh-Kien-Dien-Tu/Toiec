@@ -25,6 +25,7 @@ namespace DAL.EF
         public virtual DbSet<PART_3_4> PART_3_4 { get; set; }
         public virtual DbSet<PART_5_6_7> PART_5_6_7 { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<TIN_TUC> TIN_TUC { get; set; }
         public virtual DbSet<TUVUNG> TUVUNG { get; set; }
         public virtual DbSet<USER_BAIGIANG> USER_BAIGIANG { get; set; }
         public virtual DbSet<USER_CHUDE> USER_CHUDE { get; set; }
@@ -165,6 +166,14 @@ namespace DAL.EF
             modelBuilder.Entity<PART_5_6_7>()
                 .HasOptional(e => e.CAUHOIPART_6_7)
                 .WithRequired(e => e.PART_5_6_7);
+
+            modelBuilder.Entity<TIN_TUC>()
+                .Property(e => e.NOI_DUNG)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TIN_TUC>()
+                .Property(e => e.NGUON_TIN_TUC)
+                .IsFixedLength();
 
             modelBuilder.Entity<TUVUNG>()
                 .Property(e => e.TU)

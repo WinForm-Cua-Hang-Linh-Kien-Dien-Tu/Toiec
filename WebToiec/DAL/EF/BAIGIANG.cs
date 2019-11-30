@@ -31,6 +31,9 @@ namespace DAL.EF
 
         public int? PART { get; set; }
 
+        [StringLength(50)]
+        public string GIANG_VIEN { get; set; }
+
         public virtual DANHSACH_BAIGIANG DANHSACH_BAIGIANG { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

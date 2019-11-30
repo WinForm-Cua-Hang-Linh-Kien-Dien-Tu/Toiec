@@ -83,6 +83,7 @@
     <Compile Include="EF\PART_3_4.cs" />
     <Compile Include="EF\PART_5_6_7.cs" />
     <Compile Include="EF\sysdiagrams.cs" />
+    <Compile Include="EF\TIN_TUC.cs" />
     <Compile Include="EF\TUVUNG.cs" />
     <Compile Include="EF\USERS.cs" />
     <Compile Include="EF\USERS_PROFILE.cs" />
