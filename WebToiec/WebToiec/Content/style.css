@@ -243,7 +243,8 @@ span.x4:before,i.x4:before {
     HEADER
 \*------------------------------------*/
 #home {
-    background-image: url(~/assets/images/hero-bg.jpg);
+    
+    background-image: url('../assets/images/hero-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }

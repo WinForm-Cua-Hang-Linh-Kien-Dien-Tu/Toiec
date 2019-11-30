@@ -63,24 +63,19 @@
                     <div class="col-xs-9">
                         <div class="collapse navbar-collapse" id="navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-
-                                        <li><a href="index.html">Home Slideshow</a></li>
-
-                                    </ul>
+                                <li>
+                                    @Html.ActionLink("Home","Home","Default")
                                 </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Khóa Học<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="courses-filterable.html">Level 0 - 450</a>
+                                            @Html.ActionLink("Level 0 - 450", "IndexCourse", "Course")
                                         </li>
-                                        <li><a href="courses-tabs.html">Level 450 - 650</a></li>
-                                        <li><a href="single-course.html">Level 650 - 850</a></li>
-                                        <li><a href="single-course.html">Higher Level 850 </a></li>
-                                        <li><a href="single-course.html">Tiếng Anh Giao Tiếp</a></li>
+                                        <li>@Html.ActionLink("Level 450 - 650", "IndexCourse", "Course")</li>
+                                        <li>@Html.ActionLink("Level 650 - 850", "IndexCourse", "Course")</li>
+                                        <li>@Html.ActionLink("Higher Level 850", "IndexCourse", "Course")</li>
+                                        <li>@Html.ActionLink("Tiếng Anh Giao Tiếp", "IndexCourse", "Course")</li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
@@ -89,20 +84,11 @@
                                 </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tin Tức <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="news-list.html">News List</a></li>
-
-                                    </ul>
                                 </li>
 
                                 <li><a href="contact-us.html">Đăng Nhập</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
-                                    <ul class="dropdown-menu">
-                                        <form class="form-inline">
-                                            <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
-                                        </form>
-                                    </ul>
                                 </li>
                             </ul>
                         </div>

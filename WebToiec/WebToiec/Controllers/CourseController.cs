@@ -11,6 +11,7 @@ namespace WebToiec.Controllers
     public class CourseController : Controller
     {
         khoaHocDAL khDAL = new khoaHocDAL();
+        ModelToiec d = new ModelToiec();
         // GET: Coures
         public ActionResult IndexCourse()
         {
@@ -21,5 +22,12 @@ namespace WebToiec.Controllers
            
             return View();
         }
+
+        public ActionResult s()
+        {
+            var kh = khDAL.GetList();
+            return View(kh);
+        }
+
     }
 }

@@ -137,6 +137,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Model_KhoaHoc.cs" />
+    <Compile Include="Models\Model_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -371,7 +372,6 @@
     <Content Include="assets\pe-icons\fonts\Pe-icon-7-stroke.eot" />
     <Content Include="assets\pe-icons\fonts\Pe-icon-7-stroke.ttf" />
     <Content Include="assets\pe-icons\fonts\Pe-icon-7-stroke.woff" />
-    <Content Include="Areas\Admin\Views\Home\Add_Admin.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\init.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -401,12 +401,14 @@
     <Content Include="Views\Shared\_MasterLayoutPage.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Course\IndexCourse.cshtml" />
+    <Content Include="Views\Default\Home.cshtml" />
+    <Content Include="Views\Default\Login.cshtml" />
+    <Content Include="Views\Course\s.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Views\Coures\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

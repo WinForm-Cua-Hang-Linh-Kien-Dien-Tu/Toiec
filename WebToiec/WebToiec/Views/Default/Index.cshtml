@@ -5,7 +5,8 @@
     Layout = "~/Views/Shared/_MasterLayoutPage.cshtml";
 }
 
-<header id="home" class="backstretched fullheight max-600">
+<header id="home" class="backstretched fullheight max-600" style="background-image: url('../../assets/images/hero-bg.jpg');
+">
     <div class="dark-overlay fullheight max-600">
         <div class="container fullheight max-600">
             <div class="jumbotron">
@@ -15,7 +16,7 @@
                 </h1>
                 <p>
                     <a class="btn btn-white btn-lg page-scroll" href="#about-us" role="button">Why?</a>
-                    <a class="btn btn-lg btn-primary btn-green page-scroll" href="#our-team" role="button">Browse Courses</a>
+                    <a class="btn btn-lg btn-primary btn-green page-scroll" href="~/Views/Course/IndexCourse.cshtml" role="button">Browse Courses</a>
                 </p>
             </div>
         </div>
@@ -26,8 +27,8 @@
         <div class="container">
             <div class="row mb60 text-center">
                 <div class="col-sm-12">
-                    <h3 class="section-title">About Us</h3>
-                    <p class="section-sub-title">Who are we?</p>
+                    <h3 class="section-title">Thông Tin Về Chúng Tôi</h3>
+                    <p class="section-sub-title">Chúng Tôi Là Ai?</p>
                 </div>
             </div>
             <div class="row">
@@ -100,17 +101,17 @@
                                     <ul class="nav nav-justified image-tabs" id="course-tabs" role="tablist">
                                         <li role="presentation" class="summer-term active">
                                             <a href="#summer-term" aria-controls="summer-term" role="tab" data-toggle="tab" class="dark-overlay .half-opacity ">
-                                                <span>Summer Term</span>
+                                                <span>Toiec</span>
                                             </a>
                                         </li>
                                         <li role="presentation" class="winter-term">
                                             <a href="#winter-term" aria-controls="winter-term" role="tab" data-toggle="tab" class="dark-overlay .half-opacity ">
-                                                <span>Winter Term</span>
+                                                <span>Giao Tiếp</span>
                                             </a>
                                         </li>
                                         <li role="presentation" class="online-learning">
                                             <a href="#online-learning" aria-controls="online-learning" role="tab" data-toggle="tab" class="dark-overlay .half-opacity ">
-                                                <span>Online Learning</span>
+                                                <span>Toiec Nâng Cao</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -125,19 +126,19 @@
                                                 <div class="row">
                                                     @foreach (var kh in ViewData["khoaHocs"] as List<DAL.EF.KHOAHOC>)
                                                     {
-                                                    <div class="col-sm-12 mb40">
-                                                        <div class="row">
-                                                            <div class="col-sm-10 col-xs-12">
-                                                                <h5><span>@kh.TEN_KH</span></h5>
-                                                                <p class="lead">@kh.THOI_GIAN</p>
-                                                                <p class="mb20">Proactively parallel task vertical products for collaborative ideas. Monotonectally visualize functional functionalities vis-a-vis efficient products. Globally matrix bleeding-edge e-business with professional.</p>
-                                                                <a href="single-course.html" class="btn btn-primary btn-green">View Details</a>
-                                                            </div>
-                                                            <div class="col-sm-2 col-xs-12 text-right">
-                                                                <h1><span>@kh.GIA_TIEN</span></h1>
+                                                        <div class="col-sm-12 mb40">
+                                                            <div class="row">
+                                                                <div class="col-sm-10 col-xs-12">
+                                                                    <h5><span>@kh.TEN_KH</span></h5>
+                                                                    <p class="lead">@kh.THOI_GIAN Tháng</p>
+                                                                    <p class="mb20">Mô Tả Khóa Học</p>
+                                                                    <a href="single-course.html" class="btn btn-primary btn-green">Chi Tiết Khóa Học</a>
+                                                                </div>
+                                                                <div class="col-sm-2 col-xs-12 text-right">
+                                                                    <h1><span>@kh.GIA_TIEN VND</span></h1>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
                                                     }
                                                 </div>
                                             </div>
@@ -279,71 +280,71 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-sm-4">
                     <div class="panel-group styled-accordion" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
                             <div class="panel-heading panel-open smoothie" role="tab" id="headingOne">
                                 <h4 class="panel-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Summer Special</a>
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Khóa Học Mùa Hè</a>
                                 </h4>
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                 <div class="panel-body">
-                                    <p>Phosfluorescently e-enable multidisciplinary architectures without team driven services. Credibly innovate high-payoff alignments before resource sucking metrics. Uniquely repurpose granular synergy after tactical internal or "organic" sources. Conveniently fabricate go forward niches vis-a-vis top-line partnerships. Progressively brand 24/7 deliverables whereas diverse total linkage. Synergistically coordinate process-centric metrics vis-a-vis 24/7 expertise. Uniquely plagiarize enterprise models for business bandwidth. Uniquely redefine robust networks via low-risk high-yield materials. Professionally reinvent ethical benefits rather than reliable e-commerce. Globally synergize multifunctional human capital whereas customer directed manufactured products. Rapidiously deploy open-source potentialities whereas magnetic benefits. Uniquely impact best-of-breed customer service whereas.</p>
+                                    <p>Khóa Học Nâng Cao Trình Độ</p>
                                 </div>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading smoothie" role="tab" id="headingTwo">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Outdoor Persuits</a>
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Khóa Học Bổ Trợ</a>
                                 </h4>
                             </div>
                             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                 <div class="panel-body">
-                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                    <p>Khóa Học Nâng Cao Trình Độ</p>
                                 </div>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading smoothie" role="tab" id="headingThree">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Autumn Event</a>
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Trên 850 Điểm Toeic</a>
                                 </h4>
                             </div>
                             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                 <div class="panel-body">
-                                    <p>Enthusiastically disseminate bleeding-edge ROI rather than accurate results. Collaboratively scale interoperable experiences for dynamic services. Appropriately embrace web-enabled potentialities rather than proactive human capital. Distinctively mesh resource-leveling e-commerce without B2B applications. Rapidiously iterate resource sucking intellectual capital vis-a-vis alternative experiences. Dramatically exploit unique communities rather than customized customer service. Energistically pursue high standards in manufactured products after top-line expertise.</p>
+                                    <p>Khóa Học Nâng Cao Trình Độ</p>
                                 </div>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading smoothie" role="tab" id="heading-four">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-four" aria-expanded="false" aria-controls="collapse-four">Ski Weekend</a>
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-four" aria-expanded="false" aria-controls="collapse-four">Kỹ Năng Giao Tiếp Bằng Tiếng Anh</a>
                                 </h4>
                             </div>
                             <div id="collapse-four" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-four">
                                 <div class="panel-body">
-                                    <p>Enthusiastically disseminate bleeding-edge ROI rather than accurate results. Collaboratively scale interoperable experiences for dynamic services. Appropriately embrace web-enabled potentialities rather than proactive human capital. Distinctively mesh resource-leveling e-commerce without B2B applications. Rapidiously iterate resource sucking intellectual capital vis-a-vis alternative experiences. Dramatically exploit unique communities rather than customized customer service. Energistically pursue high standards in manufactured products after top-line expertise.</p>
+                                    <p>Khóa Học Nâng Cao Trình Độ</p>
                                 </div>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading smoothie" role="tab" id="heading-five">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-five" aria-expanded="false" aria-controls="collapse-four">Books 4 Kidz</a>
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-five" aria-expanded="false" aria-controls="collapse-four">Luyện Thi Toiec</a>
                                 </h4>
                             </div>
                             <div id="collapse-five" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-five">
                                 <div class="panel-body">
-                                    <p>Enthusiastically disseminate bleeding-edge ROI rather than accurate results. Collaboratively scale interoperable experiences for dynamic services. Appropriately embrace web-enabled potentialities rather than proactive human capital. Distinctively mesh resource-leveling e-commerce without B2B applications. Rapidiously iterate resource sucking intellectual capital vis-a-vis alternative experiences. Dramatically exploit unique communities rather than customized customer service. Energistically pursue high standards in manufactured products after top-line expertise.</p>
+                                    <p>Khóa Học Nâng Cao Trình Độ</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -493,224 +494,7 @@
     </div>
 </section>
 
-<section id="promo-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 dark-overlay col-md-offset-8 fill-right">
-                <div class="section-inner">
-                    <div class="row">
-                        <div class="col-md-offset-1 col-md-10">
-                            <h3 class="section-title">Student Testimonials</h3>
-                            <p class="section-sub-title">Pride, Passion and Performance.</p>
-                            <div class="carousel slide" data-ride="carousel" id="testimonial-carousel">
-                                <ol class="carousel-indicators">
-                                    <li class="active" data-slide-to="0" data-target="#testimonial-carousel"></li>
-                                    <li data-slide-to="1" data-target="#testimonial-carousel"></li>
-                                    <li data-slide-to="2" data-target="#testimonial-carousel"></li>
-                                </ol>
 
-                                <div class="carousel-inner">
-                                    <div class="item active">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <p>Appropriately underwhelm mission-critical outsourcing after best-of-breed systems. Holisticly synergize 24/7 content after plug-and-play experiences. Dynamically architect end-to-end catalysts for change rather than clicks-and-mortar growth strategies.</p><small><strong>James Smith</strong></small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <p>Appropriately underwhelm mission-critical outsourcing after best-of-breed systems. Holisticly synergize 24/7 content after plug-and-play experiences. Dynamically architect end-to-end catalysts for change rather than clicks-and-mortar growth strategies.</p><small><strong>Dave Wilkins</strong></small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <p>Appropriately underwhelm mission-critical outsourcing after best-of-breed systems. Holisticly synergize 24/7 content after plug-and-play experiences. Dynamically architect end-to-end catalysts for change rather than clicks-and-mortar growth strategies.</p><small><strong>Amy Owen</strong></small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section class="silver-wrapper" id="the-gallery">
-    <div class="section-inner">
-        <div class="container">
-            <div class="row mb60 text-center">
-                <div class="col-sm-12">
-                    <h3 class="section-title">Campus News</h3>
-                    <p class="section-sub-title">A finger on the pulse of our culture.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 match-height mb40">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="hover-effect smoothie">
-                                <a href="#" class="smoothie">
-                                    <img src="~/assets/images/blog-1.jpeg" alt="Image" class="img-responsive smoothie">
-                                </a>
-                                <div class="hover-caption dark-overlay smoothie text-center">
-                                    <div class="vertical-center-js">
-                                        <a href="single-post.html" class="btn btn-primary btn-green">View</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <h3 class="mt0"><a href="#">Former Student wins Prestigous Prize</a></h3>
-                            <p class="mb20">Competently simplify viral platforms via goal-oriented web services. Collaboratively disintermediate. Competently simplify viral platforms via goal-oriented web services.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 match-height mb40">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="hover-effect smoothie">
-                                <a href="#" class="smoothie">
-                                    <img src="~/assets/images/blog-2.jpg" alt="Image" class="img-responsive smoothie">
-                                </a>
-                                <div class="hover-caption dark-overlay smoothie text-center">
-                                    <div class="vertical-center-js">
-                                        <a href="single-post.html" class="btn btn-primary btn-green">View</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <h3 class="mt0"><a href="#">Former Student wins Prestigous Prize</a></h3>
-                            <p class="mb20">Competently simplify viral platforms via goal-oriented web services. Collaboratively disintermediate. Competently simplify viral platforms via goal-oriented web services.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 match-height mb40">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="hover-effect smoothie">
-                                <a href="#" class="smoothie">
-                                    <img src="~/assets/images/blog-3.jpg" alt="Image" class="img-responsive smoothie">
-                                </a>
-                                <div class="hover-caption dark-overlay smoothie text-center">
-                                    <div class="vertical-center-js">
-                                        <a href="single-post.html" class="btn btn-primary btn-green">View</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <h3 class="mt0"><a href="#">Former Student wins Prestigous Prize</a></h3>
-                            <p class="mb20">Competently simplify viral platforms via goal-oriented web services. Collaboratively disintermediate. Competently simplify viral platforms via goal-oriented web services.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 match-height mb40">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="hover-effect smoothie">
-                                <a href="#" class="smoothie">
-                                    <img src="~/assets/images/blog-4.jpeg" alt="Image" class="img-responsive smoothie">
-                                </a>
-                                <div class="hover-caption dark-overlay smoothie text-center">
-                                    <div class="vertical-center-js">
-                                        <a href="single-post.html" class="btn btn-primary btn-green">View</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <h3 class="mt0"><a href="#">Former Student wins Prestigous Prize</a></h3>
-                            <p class="mb20">Competently simplify viral platforms via goal-oriented web services. Collaboratively disintermediate. Competently simplify viral platforms via goal-oriented web services.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 match-height">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="hover-effect smoothie">
-                                <a href="#" class="smoothie">
-                                    <img src="~/assets/images/blog-5.jpg" alt="Image" class="img-responsive smoothie">
-                                </a>
-                                <div class="hover-caption dark-overlay smoothie text-center">
-                                    <div class="vertical-center-js">
-                                        <a href="single-post.html" class="btn btn-primary btn-green">View</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <h3 class="mt0"><a href="#">Former Student wins Prestigous Prize</a></h3>
-                            <p class="mb20">Competently simplify viral platforms via goal-oriented web services. Collaboratively disintermediate. Competently simplify viral platforms via goal-oriented web services.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 match-height">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="hover-effect smoothie">
-                                <a href="#" class="smoothie">
-                                    <img src="~/assets/images/blog-5.jpg" alt="Image" class="img-responsive smoothie">
-                                </a>
-                                <div class="hover-caption dark-overlay smoothie text-center">
-                                    <div class="vertical-center-js">
-                                        <a href="single-post.html" class="btn btn-primary btn-green">View</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <h3 class="mt0"><a href="#">Former Student wins Prestigous Prize</a></h3>
-                            <p class="mb20">Competently simplify viral platforms via goal-oriented web services. Collaboratively disintermediate. Competently simplify viral platforms via goal-oriented web services.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section>
-    <div class="section-inner">
-        <div class="container">
-            <div class="row mb60 text-center">
-                <div class="col-sm-12">
-                    <h3 class="section-title">Our Sponsers</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-10 col-sm-offset-1">
-                    <div class="row">
-                        <div class="col-md-3"><img class="img-responsive" src="~/assets/images/logo1.png" alt=""></div>
-                        <div class="col-md-3"><img class="img-responsive" src="~/assets/images/logo2.png" alt=""></div>
-                        <div class="col-md-3"><img class="img-responsive" src="~/assets/images/logo3.png" alt=""></div>
-                        <div class="col-md-3"><img class="img-responsive" src="~/assets/images/logo4.png" alt=""></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="dark-wrapper green-wrapper">
-    <div class="section-inner-60">
-        <div class="container">
-            <div class="row cta">
-                <div class="col-sm-9">
-                    <h4>Do you want to know more? We are here to help.</h4>
-                </div>
-                <div class="col-sm-3 text-right">
-                    <a href="#" class="btn btn-white btn-lg">Get In Touch</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 

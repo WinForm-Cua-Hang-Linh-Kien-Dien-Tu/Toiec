@@ -15,10 +15,13 @@ namespace DAL.EF
 
         public DateTime? NGAY_DANG { get; set; }
 
-        [Column(TypeName = "text")]
+        [Column(TypeName = "ntext")]
         public string NOI_DUNG { get; set; }
 
         [StringLength(100)]
         public string NGUON_TIN_TUC { get; set; }
+
+        [Column(TypeName = "text")]
+        public string HINH_ANH { get; set; }
     }
 }

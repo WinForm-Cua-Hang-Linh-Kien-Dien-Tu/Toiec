@@ -54,5 +54,12 @@ namespace DAL.DAL
             return result;
         }
 
+        public USERS GetItem(string userName, string pass)
+        {
+            USERS result = new USERS();
+            result = context.USERS.FirstOrDefault(m => m.TAI_KHOAN_USER == userName && m.MAT_KHAU_USER == pass);
+            return result;
+        }
+
     }
 }

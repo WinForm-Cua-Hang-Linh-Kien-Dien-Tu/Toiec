@@ -168,12 +168,12 @@ namespace DAL.EF
                 .WithRequired(e => e.PART_5_6_7);
 
             modelBuilder.Entity<TIN_TUC>()
-                .Property(e => e.NOI_DUNG)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TIN_TUC>()
                 .Property(e => e.NGUON_TIN_TUC)
                 .IsFixedLength();
+
+            modelBuilder.Entity<TIN_TUC>()
+                .Property(e => e.HINH_ANH)
+                .IsUnicode(false);
 
             modelBuilder.Entity<TUVUNG>()
                 .Property(e => e.TU)
