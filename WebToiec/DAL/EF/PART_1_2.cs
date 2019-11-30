@@ -17,13 +17,13 @@ namespace DAL.EF
         public string HINH { get; set; }
 
         [StringLength(100)]
-        public string AMTHANH { get; set; }
+        public string AM_THANH { get; set; }
 
-        [StringLength(200)]
-        public string DAPANDUNG { get; set; }
+        [Column(TypeName = "text")]
+        public string TEXT { get; set; }
 
         [StringLength(10)]
-        public string TEXT { get; set; }
+        public string DAP_AN_DUNG { get; set; }
 
         public virtual BAIGIANG BAIGIANG { get; set; }
     }

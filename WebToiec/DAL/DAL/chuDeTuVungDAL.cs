@@ -19,10 +19,10 @@ namespace DAL.DAL
         public int Update(CHUDE_TUVUNG pma)
         {
             int result = 0;
-            CHUDE_TUVUNG k = context.CHUDE_TUVUNG.FirstOrDefault(m => m.MACHUDE == pma.MACHUDE);
+            CHUDE_TUVUNG k = context.CHUDE_TUVUNG.FirstOrDefault(m => m.MA_CHU_DE == pma.MA_CHU_DE);
             if (k != null)
             {
-                k.TENCHUDE = pma.TENCHUDE;
+                k.TEN_CHU_DE = pma.TEN_CHU_DE;
                              
             }
             result = context.SaveChanges();
@@ -32,7 +32,7 @@ namespace DAL.DAL
         public int Delete(int pMa)
         {
             int result = 0;
-            CHUDE_TUVUNG k = context.CHUDE_TUVUNG.FirstOrDefault(m => m.MACHUDE == pMa);
+            CHUDE_TUVUNG k = context.CHUDE_TUVUNG.FirstOrDefault(m => m.MA_CHU_DE == pMa);
             context.CHUDE_TUVUNG.Remove(k);
             result = context.SaveChanges();
             return result;
@@ -47,7 +47,7 @@ namespace DAL.DAL
         public CHUDE_TUVUNG GetDVByMa(int pMa)
         {
             CHUDE_TUVUNG result = new CHUDE_TUVUNG();
-            result = context.CHUDE_TUVUNG.FirstOrDefault(m => m.MACHUDE == pMa);
+            result = context.CHUDE_TUVUNG.FirstOrDefault(m => m.MA_CHU_DE == pMa);
             return result;
         }
     }

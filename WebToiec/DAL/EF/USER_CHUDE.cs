@@ -11,7 +11,7 @@ namespace DAL.EF
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int MACHUDE { get; set; }
+        public int MA_CHU_DE { get; set; }
 
         [Key]
         [Column(Order = 1)]
@@ -19,7 +19,7 @@ namespace DAL.EF
         public int USERID { get; set; }
 
         [StringLength(50)]
-        public string TRANGTHAI { get; set; }
+        public string TRANG_THAI { get; set; }
 
         public virtual CHUDE_TUVUNG CHUDE_TUVUNG { get; set; }
 

@@ -8,12 +8,12 @@ namespace DAL.EF
 
     public partial class USERS_PROFILE
     {
-        [StringLength(50)]
+        [StringLength(100)]
         public string HOTEN { get; set; }
 
         public DateTime? NGAYSINH { get; set; }
 
-        [StringLength(6)]
+        [StringLength(10)]
         public string GIOITINH { get; set; }
 
         [StringLength(50)]

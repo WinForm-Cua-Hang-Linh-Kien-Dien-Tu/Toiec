@@ -45,8 +45,7 @@ namespace DAL.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<BAIGIANG>()
-                .Property(e => e.NOIDUNGBAIGIANG)
-                .IsFixedLength()
+                .Property(e => e.NOI_DUNG_BAI_GIANG)
                 .IsUnicode(false);
 
             modelBuilder.Entity<BAIGIANG>()
@@ -60,8 +59,7 @@ namespace DAL.EF
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CAUHOI_3_4>()
-                .Property(e => e.NOIDUNG)
-                .IsFixedLength()
+                .Property(e => e.NOI_DUNG)
                 .IsUnicode(false);
 
             modelBuilder.Entity<CAUHOI_3_4>()
@@ -70,36 +68,23 @@ namespace DAL.EF
                 .HasForeignKey(e => e.IDCAU_34);
 
             modelBuilder.Entity<CAUHOIPART_6_7>()
-                .Property(e => e.NOIDUNG)
-                .IsFixedLength()
+                .Property(e => e.NOI_DUNG)
                 .IsUnicode(false);
 
             modelBuilder.Entity<CHI_TIET_TU_VUNG>()
-                .Property(e => e.NGHIACUATU)
-                .IsFixedLength()
+                .Property(e => e.PHAT_AM)
                 .IsUnicode(false);
 
             modelBuilder.Entity<CHI_TIET_TU_VUNG>()
-                .Property(e => e.PHATAM)
-                .IsFixedLength()
+                .Property(e => e.PHIEN_AM)
                 .IsUnicode(false);
 
             modelBuilder.Entity<CHI_TIET_TU_VUNG>()
-                .Property(e => e.PHIENAM)
-                .IsFixedLength()
+                .Property(e => e.VI_DU)
                 .IsUnicode(false);
 
             modelBuilder.Entity<CHI_TIET_TU_VUNG>()
-                .Property(e => e.VIDU)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CHI_TIET_TU_VUNG>()
-                .Property(e => e.HINHANH)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CHUDE_TUVUNG>()
-                .Property(e => e.TENCHUDE)
-                .IsFixedLength()
+                .Property(e => e.HIN_HANH)
                 .IsUnicode(false);
 
             modelBuilder.Entity<CHUDE_TUVUNG>()
@@ -111,11 +96,6 @@ namespace DAL.EF
                 .HasMany(e => e.USER_CHUDE)
                 .WithRequired(e => e.CHUDE_TUVUNG)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<DANHSACH_BAIGIANG>()
-                .Property(e => e.TENDANHSACH)
-                .IsFixedLength()
-                .IsUnicode(false);
 
             modelBuilder.Entity<DAP_AN>()
                 .Property(e => e.DAPAN_C)
@@ -143,10 +123,6 @@ namespace DAL.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<KHOAHOC>()
-                .Property(e => e.GIATIEN)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<KHOAHOC>()
                 .HasMany(e => e.USER_KHOAHOC)
                 .WithRequired(e => e.KHOAHOC)
                 .WillCascadeOnDelete(false);
@@ -157,22 +133,20 @@ namespace DAL.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<PART_1_2>()
-                .Property(e => e.AMTHANH)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<PART_1_2>()
-                .Property(e => e.DAPANDUNG)
+                .Property(e => e.AM_THANH)
                 .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<PART_1_2>()
                 .Property(e => e.TEXT)
-                .IsFixedLength()
                 .IsUnicode(false);
 
+            modelBuilder.Entity<PART_1_2>()
+                .Property(e => e.DAP_AN_DUNG)
+                .IsFixedLength();
+
             modelBuilder.Entity<PART_3_4>()
-                .Property(e => e.AMTHANH)
+                .Property(e => e.AM_THANH)
                 .IsFixedLength()
                 .IsUnicode(false);
 
@@ -186,7 +160,6 @@ namespace DAL.EF
 
             modelBuilder.Entity<PART_5_6_7>()
                 .Property(e => e.NOIDUNGCAUHOI)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<PART_5_6_7>()
@@ -199,32 +172,27 @@ namespace DAL.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<TUVUNG>()
-                .Property(e => e.THELOAI)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TUVUNG>()
                 .HasMany(e => e.CHI_TIET_TU_VUNG)
                 .WithRequired(e => e.TUVUNG)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<USER_BAIGIANG>()
-                .Property(e => e.TRANGTHAI)
+                .Property(e => e.TRANG_THAI)
                 .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<USER_CHUDE>()
-                .Property(e => e.TRANGTHAI)
+                .Property(e => e.TRANG_THAI)
                 .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<USERS>()
-                .Property(e => e.TAIKHOANUSER)
+                .Property(e => e.TAI_KHOAN_USER)
                 .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<USERS>()
-                .Property(e => e.MATKHAUUSER)
+                .Property(e => e.MAT_KHAU_USER)
                 .IsFixedLength()
                 .IsUnicode(false);
 
@@ -248,33 +216,12 @@ namespace DAL.EF
                 .WithRequired(e => e.USERS);
 
             modelBuilder.Entity<USERS_PROFILE>()
-                .Property(e => e.HOTEN)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<USERS_PROFILE>()
-                .Property(e => e.GIOITINH)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<USERS_PROFILE>()
-                .Property(e => e.NGHENGHIEP)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<USERS_PROFILE>()
                 .Property(e => e.SDT)
                 .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<USERS_PROFILE>()
                 .Property(e => e.EMAIL)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<USERS_PROFILE>()
-                .Property(e => e.THANHPHO)
-                .IsFixedLength()
                 .IsUnicode(false);
         }
     }

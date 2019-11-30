@@ -1,3 +1,5 @@
+E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\System.Reflection.Metadata.dll
+E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\VBCSCompiler.exe
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\WebToiec.dll.config
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\WebToiec.dll
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\WebToiec.pdb
@@ -21,11 +23,9 @@ E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\System.Collections.
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\System.Diagnostics.StackTrace.dll
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\System.IO.FileSystem.dll
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\System.IO.FileSystem.Primitives.dll
-E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\System.Reflection.Metadata.dll
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\vbc.exe
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\vbc.exe.config
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\vbc.rsp
-E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\VBCSCompiler.exe
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\VBCSCompiler.exe.config
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\Antlr3.Runtime.dll
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
@@ -49,11 +49,11 @@ E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\System.Web.WebPages.Razor.
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\Newtonsoft.Json.xml
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\Antlr3.Runtime.pdb
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\obj\Debug\WebToiec.csprojAssemblyReference.cache
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\obj\Debug\WebToiec.csproj.CoreCompileInputs.cache
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\obj\Debug\WebToiec.csproj.CopyComplete
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\obj\Debug\WebToiec.dll
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\obj\Debug\WebToiec.pdb
+E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\obj\Debug\WebToiec.csprojAssemblyReference.cache
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\DAL.dll
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\EntityFramework.dll
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\EntityFramework.SqlServer.dll

@@ -11,10 +11,10 @@ namespace DAL.EF
     {
         public int ID { get; set; }
 
-        [StringLength(10)]
+        [StringLength(30)]
         public string TAIKHOAN { get; set; }
 
-        [StringLength(10)]
+        [StringLength(30)]
         public string MATKHAU { get; set; }
     }
 }

@@ -19,17 +19,17 @@ namespace DAL.EF
         [Key]
         public int USERID { get; set; }
 
-        [StringLength(20)]
-        public string TAIKHOANUSER { get; set; }
+        [StringLength(50)]
+        public string TAI_KHOAN_USER { get; set; }
 
-        [StringLength(20)]
-        public string MATKHAUUSER { get; set; }
+        [StringLength(50)]
+        public string MAT_KHAU_USER { get; set; }
 
-        public DateTime? NGAYTAO { get; set; }
+        public DateTime? NGAY_TAO { get; set; }
 
-        public DateTime? NGAYBATDAU { get; set; }
+        public DateTime? NGAY_BAT_DAU { get; set; }
 
-        public DateTime? NGAYKETTHUC { get; set; }
+        public DateTime? NGAY_KET_THUC { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USER_BAIGIANG> USER_BAIGIANG { get; set; }

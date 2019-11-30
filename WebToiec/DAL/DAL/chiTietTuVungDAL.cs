@@ -23,12 +23,12 @@ namespace DAL.DAL
             if (k != null)
             {
                 k.ID_TUVUNG = pma.ID_TUVUNG;
-                k.MACHUDE = pma.MACHUDE;
-                k.NGHIACUATU = pma.NGHIACUATU;
-                k.PHATAM = pma.PHATAM;
-                k.PHIENAM = pma.PHIENAM;
-                k.VIDU = pma.VIDU;
-                k.HINHANH = pma.HINHANH;
+                k.MA_CHU_DE = pma.MA_CHU_DE;
+                k.NGHIA_CUA_TU = pma.NGHIA_CUA_TU;
+                k.PHAT_AM = pma.PHAT_AM;
+                k.PHIEN_AM = pma.PHIEN_AM;
+                k.VI_DU = pma.VI_DU;
+                k.HIN_HANH = pma.HIN_HANH;
             }
             result = context.SaveChanges();
             return result;

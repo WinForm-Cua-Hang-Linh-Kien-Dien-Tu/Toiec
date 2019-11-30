@@ -22,11 +22,11 @@ namespace DAL.DAL
             USERS k = context.USERS.FirstOrDefault(m => m.USERID == pma.USERID);
             if (k != null)
             {
-                k.TAIKHOANUSER = pma.TAIKHOANUSER;
-                k.MATKHAUUSER = pma.MATKHAUUSER;
-                k.NGAYTAO = pma.NGAYTAO;
-                k.NGAYBATDAU = pma.NGAYBATDAU;
-                k.NGAYKETTHUC = pma.NGAYKETTHUC;
+                k.TAI_KHOAN_USER = pma.TAI_KHOAN_USER;
+                k.MAT_KHAU_USER = pma.MAT_KHAU_USER;
+                k.NGAY_TAO = pma.NGAY_TAO;
+                k.NGAY_BAT_DAU = pma.NGAY_BAT_DAU;
+                k.NGAY_KET_THUC = pma.NGAY_KET_THUC;
             }
             result = context.SaveChanges();
             return result;

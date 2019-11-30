@@ -12,22 +12,21 @@ namespace DAL.EF
 
         public int ID_TUVUNG { get; set; }
 
-        public int MACHUDE { get; set; }
+        public int MA_CHU_DE { get; set; }
 
-        [StringLength(50)]
-        public string NGHIACUATU { get; set; }
+        public string NGHIA_CUA_TU { get; set; }
 
         [StringLength(200)]
-        public string PHATAM { get; set; }
+        public string PHAT_AM { get; set; }
 
-        [StringLength(20)]
-        public string PHIENAM { get; set; }
+        [StringLength(200)]
+        public string PHIEN_AM { get; set; }
 
         [Column(TypeName = "text")]
-        public string VIDU { get; set; }
+        public string VI_DU { get; set; }
 
         [StringLength(100)]
-        public string HINHANH { get; set; }
+        public string HIN_HANH { get; set; }
 
         public virtual CHUDE_TUVUNG CHUDE_TUVUNG { get; set; }
 

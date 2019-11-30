@@ -19,7 +19,7 @@ namespace DAL.DAL
         public int Update(USER_KHOAHOC pma)
         {
             int result = 0;
-            USER_KHOAHOC k = context.USER_KHOAHOC.FirstOrDefault(m => m.ID_GIA == pma.ID_GIA
+            USER_KHOAHOC k = context.USER_KHOAHOC.FirstOrDefault(m => m.ID_KH == pma.ID_KH
                                                                 && m.USERID == pma.USERID);
             if (k != null)
             {
@@ -32,7 +32,7 @@ namespace DAL.DAL
         public int Delete(int pMa, int userID)
         {
             int result = 0;
-            USER_KHOAHOC k = context.USER_KHOAHOC.FirstOrDefault(m => m.ID_GIA == pMa
+            USER_KHOAHOC k = context.USER_KHOAHOC.FirstOrDefault(m => m.ID_KH == pMa
                                                                && m.USERID == userID);
             context.USER_KHOAHOC.Remove(k);
             result = context.SaveChanges();
@@ -48,7 +48,7 @@ namespace DAL.DAL
         public USER_KHOAHOC GetDVByMa(int pMa, int userID)
         {
             USER_KHOAHOC result = new USER_KHOAHOC();
-            result = context.USER_KHOAHOC.FirstOrDefault(m => m.ID_GIA == pMa
+            result = context.USER_KHOAHOC.FirstOrDefault(m => m.ID_KH == pMa
                                                                && m.USERID == userID);
             return result;
         }

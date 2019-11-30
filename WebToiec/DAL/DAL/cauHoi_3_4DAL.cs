@@ -23,7 +23,7 @@ namespace DAL.DAL
             if (k != null)
             {
                 k.ID_CAU_PART_3_4 = pma.ID_CAU_PART_3_4;
-                k.NOIDUNG = pma.NOIDUNG;
+                k.NOI_DUNG = pma.NOI_DUNG;
                 k.STT = pma.STT;
             }
             result = context.SaveChanges();

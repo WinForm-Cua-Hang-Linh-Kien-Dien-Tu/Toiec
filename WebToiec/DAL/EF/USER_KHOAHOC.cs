@@ -16,7 +16,7 @@ namespace DAL.EF
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID_GIA { get; set; }
+        public int ID_KH { get; set; }
 
         [StringLength(50)]
         public string TrangThai { get; set; }

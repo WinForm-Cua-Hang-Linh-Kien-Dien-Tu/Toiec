@@ -18,10 +18,10 @@ namespace DAL.EF
         [Key]
         public int ID_TUVUNG { get; set; }
 
-        [StringLength(20)]
+        [StringLength(50)]
         public string TU { get; set; }
 
-        [StringLength(10)]
+        [StringLength(100)]
         public string THELOAI { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
