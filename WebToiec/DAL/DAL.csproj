@@ -63,6 +63,7 @@
     <Compile Include="DAL\part_1_2DAL.cs" />
     <Compile Include="DAL\part_3_4DAL.cs" />
     <Compile Include="DAL\part_5_6_7.cs" />
+    <Compile Include="DAL\tinTucDAL.cs" />
     <Compile Include="DAL\tuVungDAL.cs" />
     <Compile Include="DAL\userProfileDAL.cs" />
     <Compile Include="DAL\usersDAL.cs" />

@@ -243,8 +243,7 @@ span.x4:before,i.x4:before {
     HEADER
 \*------------------------------------*/
 #home {
-    
-    background-image: url('../assets/images/hero-bg.jpg');
+    background-image: url('../assets/images/blog-6.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -688,56 +687,56 @@ textarea.form-control {
 }
 
 #band-member-1 {
-    background-image: url(~/assets/images/band-member-1.jpg);
+    background-image: url('../assets/images/band-member-1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 #band-member-2 {
-    background-image: url(~/assets/images/band-member-2.jpg);
+    background-image: url('../assets/images/band-member-2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 #band-member-3 {
-    background-image: url(~/assets/images/band-member-3.jpg);
+    background-image: url('../assets/images/band-member-3.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 #promo-3 {
-    background-image: url(~/assets/images/section-bg-3.jpg);
+    background-image: url('../assets/images/section-bg-3.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 #contact-us {
-    background-image: url(~/assets/images/contact-bg.jpg);
+    background-image: url('../assets/images/band-member-2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 #course-tabs li.summer-term {
-    background-image: url(~/assets/images/image-tab-bg-1.jpg);
+    background-image: url('../assets/images/image-tab-bg-1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 #course-tabs li.winter-term {
-    background-image: url(~/assets/images/image-tab-bg-2.jpeg);
+    background-image: url('../assets/images/image-tab-bg-3.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 #course-tabs li.online-learning {
-    background-image: url(~/assets/images/image-tab-bg-3.jpg);
+    background-image: url('../assets/images/image-tab-bg-3.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

@@ -124,6 +124,11 @@ namespace DAL.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<KHOAHOC>()
+                .Property(e => e.VIDEO_GIOI_THIEU)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<KHOAHOC>()
                 .HasMany(e => e.USER_KHOAHOC)
                 .WithRequired(e => e.KHOAHOC)
                 .WillCascadeOnDelete(false);

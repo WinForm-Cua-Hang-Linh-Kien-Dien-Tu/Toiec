@@ -61,5 +61,11 @@ namespace DAL.DAL
             return result;
         }
 
+        public int GetItem(string userName)
+        {
+            int result = context.USERS.Where(m => m.TAI_KHOAN_USER == userName).Count();
+            return result;
+        }
+
     }
 }

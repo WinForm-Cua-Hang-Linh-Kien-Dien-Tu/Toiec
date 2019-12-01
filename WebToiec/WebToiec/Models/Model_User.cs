@@ -9,17 +9,24 @@ namespace WebToiec.Models
 {
     public class Model_User
     {
+        [Required]
         [DisplayName("User Name")]
         public string TAI_KHOAN_USER { get; set; }
 
-        [StringLength(50)]
-        [DisplayName("Mật Khẩu")]
+        [Required]
+        [DataType("Password")]
+        [DisplayName("PassWord")]
+        [StringLength(20,MinimumLength = 6, ErrorMessage = "Mật Khẩu Không Thể Ít Hơn 6 Ký Tự")]
         public string MAT_KHAU_USER { get; set; }
+
+        [Required]
+        [DisplayName("Confirm PassWord")]
+        [DataType("Password")]
+        [Compare("MAT_KHAU_USER")]
+        public string Confirm_MatKhau { get; set; }
 
         public DateTime? NGAY_TAO { get; set; }
 
-        public DateTime? NGAY_BAT_DAU { get; set; }
 
-        public DateTime? NGAY_KET_THUC { get; set; }
     }
 }

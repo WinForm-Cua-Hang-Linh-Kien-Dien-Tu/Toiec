@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "TinTuc";
+    Layout = "~/Views/Shared/_MasterLayoutPage.cshtml";
+}
+
+<header id="home" class="backstretched single-page-hero">
+    <div class="dark-overlay single-page-hero">
+        <div class="container single-page-hero">
+            <div class="vertical-center-js text-center">
+                <h1>Tin Tức</h1>
+                <p class="section-sub-title"></p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="our-courses">
+    <div class="section-inner">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in ViewData["khoaHocs"] as List<DAL.EF.TIN_TUC>)
+                {
+                <div class="col-md-12 mb40">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="hover-effect smoothie mb40">
+      
+                                <img src="~/assets/images/@item.HINH_ANH" alt="Image" class="img-responsive smoothie">
+
+                                <div class="hover-caption dark-overlay smoothie text-center">
+                                    <div class="vertical-center-js">
+                                        @Html.ActionLink("Chi Tiết", "ChiTietTinTuc", new { id = item.ID }, new { @class= "btn btn-primary btn-green" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-8">
+                            <h2 class="mt0 mb40">@item.TEN_TIN_TUC</h2>
+                            <p class="mb20"><small>@item.NOI_DUNG</small></p>
+                            <p class="mb20"><small>@item.NGAY_DANG</small></p>
+                            @Html.ActionLink("Chi Tiết", "ChiTietTinTuc", new { id = item.ID }, new { @class = "btn btn-primary btn-green" })
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

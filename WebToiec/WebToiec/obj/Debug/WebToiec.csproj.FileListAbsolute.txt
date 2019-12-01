@@ -1,4 +1,3 @@
-E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\obj\Debug\WebToiec.csprojAssemblyReference.cache
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\obj\Debug\WebToiec.csproj.CoreCompileInputs.cache
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\WebToiec.dll.config
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\WebToiec.dll
@@ -58,6 +57,7 @@ E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\System.Web.WebPages.Razor.
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\Newtonsoft.Json.xml
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\Antlr3.Runtime.pdb
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\obj\Debug\WebToiec.csprojAssemblyReference.cache
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\obj\Debug\WebToiec.csproj.CopyComplete
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\obj\Debug\WebToiec.dll
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\obj\Debug\WebToiec.pdb

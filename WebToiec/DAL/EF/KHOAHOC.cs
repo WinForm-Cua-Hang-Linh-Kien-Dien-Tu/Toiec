@@ -24,6 +24,14 @@ namespace DAL.EF
 
         public string TEN_KH { get; set; }
 
+        [Column(TypeName = "ntext")]
+        public string GIOI_THIEU { get; set; }
+
+        [StringLength(100)]
+        public string VIDEO_GIOI_THIEU { get; set; }
+
+        public int? DANH_GIA { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USER_KHOAHOC> USER_KHOAHOC { get; set; }
     }

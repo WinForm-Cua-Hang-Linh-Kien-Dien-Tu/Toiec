@@ -1,0 +1,52 @@
+﻿@model DAL.EF.KHOAHOC
+@{
+    ViewBag.Title = "ChiTietCourse";
+    Layout = "~/Views/Shared/_MasterLayoutPage.cshtml";
+}
+
+<header id="home" class="backstretched single-page-hero">
+    <div class="dark-overlay single-page-hero">
+        <div class="container single-page-hero">
+            <div class="vertical-center-js text-center">
+                <h1>Chi Tiết Khóa Học</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="about-us">
+    <div class="section-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <p class="lead">@Model.TEN_KH</p>
+                    <div class="frame-wrapper mb40">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/C3jA2UB-O3g" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <p class="lead">@Model.GIOI_THIEU</p>
+
+                </div>
+
+                <div class="col-sm-3 col-sm-offset-1 sidebar">
+                   
+                    <div class="course-fees widget mb40">
+                        <h4 class="widget-title mb40">Giá Tiền</h4>
+                        <div class="widget-content">
+                            <span class="course-price">@Model.GIA_TIEN VND</span>
+                            <span class="course-info">Thời Gian: <strong>@Model.THOI_GIAN Tháng</strong></span>
+                            <span class="course-info">Students Passes: <strong>106</strong></span>
+                            <span class="course-info">
+                            Đánh Giá: 
+                                @for (int i = 0; i < Model.DANH_GIA; i++)
+                                {
+                                     <i class="fa fa-star"></i>
+                                }
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
