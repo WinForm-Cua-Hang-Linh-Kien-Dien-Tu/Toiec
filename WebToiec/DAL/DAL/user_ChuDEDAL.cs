@@ -19,11 +19,11 @@ namespace DAL.DAL
         public int Update(USER_CHUDE pma)
         {
             int result = 0;
-            USER_CHUDE k = context.USER_CHUDE.FirstOrDefault(m => m.MACHUDE == pma.MACHUDE
+            USER_CHUDE k = context.USER_CHUDE.FirstOrDefault(m => m.MA_CHU_DE == pma.MA_CHU_DE
                                                                 && m.USERID == pma.USERID);
             if (k != null)
             {
-                k.TRANGTHAI = pma.TRANGTHAI;
+                k.TRANG_THAI = pma.TRANG_THAI;
             }
             result = context.SaveChanges();
             return result;
@@ -32,7 +32,7 @@ namespace DAL.DAL
         public int Delete(int pMa, int userID)
         {
             int result = 0;
-            USER_CHUDE k = context.USER_CHUDE.FirstOrDefault(m => m.MACHUDE == pMa
+            USER_CHUDE k = context.USER_CHUDE.FirstOrDefault(m => m.MA_CHU_DE == pMa
                                                                && m.USERID == userID);
             context.USER_CHUDE.Remove(k);
             result = context.SaveChanges();
@@ -48,7 +48,7 @@ namespace DAL.DAL
         public USER_CHUDE GetDVByMa(int pMa, int userID)
         {
             USER_CHUDE result = new USER_CHUDE();
-            result = context.USER_CHUDE.FirstOrDefault(m => m.MACHUDE == pMa
+            result = context.USER_CHUDE.FirstOrDefault(m => m.MA_CHU_DE == pMa
                                                                && m.USERID == userID);
             return result;
         }

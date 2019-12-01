@@ -23,7 +23,7 @@ namespace DAL.DAL
             if (k != null)
             {
                 k.ID_DANHSACH = pma.ID_DANHSACH;
-                k.NOIDUNGBAIGIANG = pma.NOIDUNGBAIGIANG;
+                k.NOI_DUNG_BAI_GIANG = pma.NOI_DUNG_BAI_GIANG;
                 k.VIDEO = pma.VIDEO;
                 k.PART = pma.PART;
             }

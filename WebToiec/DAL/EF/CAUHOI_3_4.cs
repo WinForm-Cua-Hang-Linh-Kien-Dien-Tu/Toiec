@@ -19,8 +19,8 @@ namespace DAL.EF
 
         public int? ID_CAU_PART_3_4 { get; set; }
 
-        [StringLength(200)]
-        public string NOIDUNG { get; set; }
+        [Column(TypeName = "text")]
+        public string NOI_DUNG { get; set; }
 
         public int? STT { get; set; }
 

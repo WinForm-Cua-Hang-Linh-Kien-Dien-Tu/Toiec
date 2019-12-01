@@ -22,7 +22,7 @@ namespace DAL.DAL
             DANHSACH_BAIGIANG k = context.DANHSACH_BAIGIANG.FirstOrDefault(m => m.ID_DANHSACH == pma.ID_DANHSACH);
             if (k != null)
             {
-                k.TENDANHSACH = pma.TENDANHSACH;
+                k.TEN_DANH_SACH = pma.TEN_DANH_SACH;
               
             }
             result = context.SaveChanges();

@@ -17,8 +17,8 @@ namespace DAL.EF
         [Key]
         public int ID_DANHSACH { get; set; }
 
-        [StringLength(100)]
-        public string TENDANHSACH { get; set; }
+        [StringLength(200)]
+        public string TEN_DANH_SACH { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BAIGIANG> BAIGIANG { get; set; }

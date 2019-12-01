@@ -19,11 +19,11 @@ namespace DAL.DAL
         public int Update(KHOAHOC pma)
         {
             int result = 0;
-            KHOAHOC k = context.KHOAHOC.FirstOrDefault(m => m.ID_GIA == pma.ID_GIA);
+            KHOAHOC k = context.KHOAHOC.FirstOrDefault(m => m.ID_KH == pma.ID_KH);
             if (k != null)
             {
-                k.GIATIEN = pma.GIATIEN;
-                k.THOIGIAN = pma.THOIGIAN;
+                k.GIA_TIEN = pma.GIA_TIEN;
+                k.THOI_GIAN = pma.THOI_GIAN;
                
             }
             result = context.SaveChanges();
@@ -33,7 +33,7 @@ namespace DAL.DAL
         public int Delete(int pMa)
         {
             int result = 0;
-            KHOAHOC k = context.KHOAHOC.FirstOrDefault(m => m.ID_GIA == pMa);
+            KHOAHOC k = context.KHOAHOC.FirstOrDefault(m => m.ID_KH == pMa);
             context.KHOAHOC.Remove(k);
             result = context.SaveChanges();
             return result;
@@ -48,8 +48,15 @@ namespace DAL.DAL
         public KHOAHOC GetDVByMa(int pMa)
         {
             KHOAHOC result = new KHOAHOC();
-            result = context.KHOAHOC.FirstOrDefault(m => m.ID_GIA == pMa);
+            result = context.KHOAHOC.FirstOrDefault(m => m.ID_KH == pMa);
             return result;
+        }
+
+        public List<string> GetTenKH()
+        {
+            List<string> list = new List<string>();
+            list = (from a in context.KHOAHOC select a.TEN_KH).ToList();
+            return list;
         }
     }
 }

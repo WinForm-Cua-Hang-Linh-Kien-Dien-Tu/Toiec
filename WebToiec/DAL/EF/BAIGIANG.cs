@@ -23,13 +23,16 @@ namespace DAL.EF
 
         public int? ID_DANHSACH { get; set; }
 
-        [StringLength(100)]
-        public string NOIDUNGBAIGIANG { get; set; }
+        [Column(TypeName = "text")]
+        public string NOI_DUNG_BAI_GIANG { get; set; }
 
         [StringLength(100)]
         public string VIDEO { get; set; }
 
         public int? PART { get; set; }
+
+        [StringLength(50)]
+        public string GIANG_VIEN { get; set; }
 
         public virtual DANHSACH_BAIGIANG DANHSACH_BAIGIANG { get; set; }
 

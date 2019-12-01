@@ -63,6 +63,7 @@
     <Compile Include="DAL\part_1_2DAL.cs" />
     <Compile Include="DAL\part_3_4DAL.cs" />
     <Compile Include="DAL\part_5_6_7.cs" />
+    <Compile Include="DAL\tinTucDAL.cs" />
     <Compile Include="DAL\tuVungDAL.cs" />
     <Compile Include="DAL\userProfileDAL.cs" />
     <Compile Include="DAL\usersDAL.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="EF\PART_3_4.cs" />
     <Compile Include="EF\PART_5_6_7.cs" />
     <Compile Include="EF\sysdiagrams.cs" />
+    <Compile Include="EF\TIN_TUC.cs" />
     <Compile Include="EF\TUVUNG.cs" />
     <Compile Include="EF\USERS.cs" />
     <Compile Include="EF\USERS_PROFILE.cs" />

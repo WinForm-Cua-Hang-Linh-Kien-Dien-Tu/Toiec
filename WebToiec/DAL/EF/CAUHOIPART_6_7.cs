@@ -20,8 +20,8 @@ namespace DAL.EF
 
         public int? ID_CAU_PART_567 { get; set; }
 
-        [StringLength(200)]
-        public string NOIDUNG { get; set; }
+        [Column(TypeName = "text")]
+        public string NOI_DUNG { get; set; }
 
         public virtual PART_5_6_7 PART_5_6_7 { get; set; }
 

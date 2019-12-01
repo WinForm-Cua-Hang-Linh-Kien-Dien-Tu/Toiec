@@ -14,7 +14,7 @@ namespace DAL.EF
         public int? ID_BAIGIANG { get; set; }
 
         [StringLength(100)]
-        public string AMTHANH { get; set; }
+        public string AM_THANH { get; set; }
 
         [Column(TypeName = "text")]
         public string TEXT { get; set; }

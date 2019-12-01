@@ -13,7 +13,7 @@ namespace DAL.EF
 
         public int? ID_BAIGIANG { get; set; }
 
-        [StringLength(100)]
+        [Column(TypeName = "text")]
         public string NOIDUNGCAUHOI { get; set; }
 
         public virtual BAIGIANG BAIGIANG { get; set; }

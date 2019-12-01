@@ -23,7 +23,7 @@ namespace DAL.DAL
                                                                      && m.USERID == pma.USERID);
             if (k != null)
             {
-                k.TRANGTHAI = pma.TRANGTHAI;
+                k.TRANG_THAI = pma.TRANG_THAI;
             }
             result = context.SaveChanges();
             return result;

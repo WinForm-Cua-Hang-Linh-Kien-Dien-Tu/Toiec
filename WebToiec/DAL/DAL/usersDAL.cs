@@ -22,11 +22,11 @@ namespace DAL.DAL
             USERS k = context.USERS.FirstOrDefault(m => m.USERID == pma.USERID);
             if (k != null)
             {
-                k.TAIKHOANUSER = pma.TAIKHOANUSER;
-                k.MATKHAUUSER = pma.MATKHAUUSER;
-                k.NGAYTAO = pma.NGAYTAO;
-                k.NGAYBATDAU = pma.NGAYBATDAU;
-                k.NGAYKETTHUC = pma.NGAYKETTHUC;
+                k.TAI_KHOAN_USER = pma.TAI_KHOAN_USER;
+                k.MAT_KHAU_USER = pma.MAT_KHAU_USER;
+                k.NGAY_TAO = pma.NGAY_TAO;
+                k.NGAY_BAT_DAU = pma.NGAY_BAT_DAU;
+                k.NGAY_KET_THUC = pma.NGAY_KET_THUC;
             }
             result = context.SaveChanges();
             return result;
@@ -51,6 +51,19 @@ namespace DAL.DAL
         {
             USERS result = new USERS();
             result = context.USERS.FirstOrDefault(m => m.USERID == pMa);
+            return result;
+        }
+
+        public USERS GetItem(string userName, string pass)
+        {
+            USERS result = new USERS();
+            result = context.USERS.FirstOrDefault(m => m.TAI_KHOAN_USER == userName && m.MAT_KHAU_USER == pass);
+            return result;
+        }
+
+        public int GetItem(string userName)
+        {
+            int result = context.USERS.Where(m => m.TAI_KHOAN_USER == userName).Count();
             return result;
         }
 

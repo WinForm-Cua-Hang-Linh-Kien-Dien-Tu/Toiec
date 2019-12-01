@@ -24,8 +24,8 @@ namespace DAL.DAL
             {
                 k.ID_BAIGIANG = pma.ID_BAIGIANG;
                 k.HINH = pma.HINH;
-                k.AMTHANH = pma.AMTHANH;
-                k.DAPANDUNG = pma.DAPANDUNG;
+                k.AM_THANH = pma.AM_THANH;
+                k.DAP_AN_DUNG = pma.DAP_AN_DUNG;
                 k.TEXT = pma.TEXT;
                
             }

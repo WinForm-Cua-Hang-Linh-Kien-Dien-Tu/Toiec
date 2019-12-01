@@ -16,10 +16,12 @@ namespace DAL.EF
         }
 
         [Key]
-        public int MACHUDE { get; set; }
+        public int MA_CHU_DE { get; set; }
 
-        [StringLength(50)]
-        public string TENCHUDE { get; set; }
+        [StringLength(200)]
+        public string TEN_CHU_DE { get; set; }
+
+        public int? TONG_SO_TU { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHI_TIET_TU_VUNG> CHI_TIET_TU_VUNG { get; set; }

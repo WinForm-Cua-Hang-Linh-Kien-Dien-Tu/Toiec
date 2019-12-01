@@ -19,7 +19,7 @@ namespace DAL.EF
         public int ID_BAIGIANG { get; set; }
 
         [StringLength(50)]
-        public string TRANGTHAI { get; set; }
+        public string TRANG_THAI { get; set; }
 
         public virtual BAIGIANG BAIGIANG { get; set; }
 

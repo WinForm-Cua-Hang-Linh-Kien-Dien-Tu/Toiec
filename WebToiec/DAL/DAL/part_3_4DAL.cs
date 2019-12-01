@@ -23,7 +23,7 @@ namespace DAL.DAL
             if (k != null)
             {
                 k.ID_BAIGIANG = pma.ID_BAIGIANG;
-                k.AMTHANH = pma.AMTHANH;
+                k.AM_THANH = pma.AM_THANH;
                 k.TEXT = pma.TEXT;
             }
             result = context.SaveChanges();
