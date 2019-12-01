@@ -22,7 +22,7 @@ namespace DAL.DAL
             ADMIN k = context.ADMIN.FirstOrDefault(m => m.ID == pma.ID);
             if (k != null)
             {
-                k.TAIKHOAN = pma.TAIKHOAN;
+               
                 k.MATKHAU = pma.MATKHAU;
             }
             result = context.SaveChanges();
@@ -44,10 +44,10 @@ namespace DAL.DAL
             return list;
         }
 
-        public ADMIN GetDVByMa(int pMa)
+        public ADMIN GetDVByMa(string pMa)
         {
             ADMIN result = new ADMIN();
-            result = context.ADMIN.FirstOrDefault(m => m.ID == pMa);
+            result = context.ADMIN.FirstOrDefault(m => m.TAIKHOAN == pMa); 
             return result;
         }
     }

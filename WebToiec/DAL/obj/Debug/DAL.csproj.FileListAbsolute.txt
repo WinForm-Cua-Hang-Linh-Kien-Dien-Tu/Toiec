@@ -9,3 +9,15 @@ E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\DAL\obj\Debug\DAL.csproj.CoreCompileInp
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\DAL\obj\Debug\DAL.csproj.CopyComplete
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\DAL\obj\Debug\DAL.dll
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\DAL\obj\Debug\DAL.pdb
+E:\Study\DoAnTotNghiep\Toiec\WebToiec\DAL\bin\Debug\DAL.dll.config
+E:\Study\DoAnTotNghiep\Toiec\WebToiec\DAL\bin\Debug\DAL.dll
+E:\Study\DoAnTotNghiep\Toiec\WebToiec\DAL\bin\Debug\DAL.pdb
+E:\Study\DoAnTotNghiep\Toiec\WebToiec\DAL\bin\Debug\EntityFramework.dll
+E:\Study\DoAnTotNghiep\Toiec\WebToiec\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Study\DoAnTotNghiep\Toiec\WebToiec\DAL\bin\Debug\EntityFramework.xml
+E:\Study\DoAnTotNghiep\Toiec\WebToiec\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Study\DoAnTotNghiep\Toiec\WebToiec\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+E:\Study\DoAnTotNghiep\Toiec\WebToiec\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\Study\DoAnTotNghiep\Toiec\WebToiec\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\Study\DoAnTotNghiep\Toiec\WebToiec\DAL\obj\Debug\DAL.dll
+E:\Study\DoAnTotNghiep\Toiec\WebToiec\DAL\obj\Debug\DAL.pdb
