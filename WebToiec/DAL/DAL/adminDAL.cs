@@ -50,5 +50,13 @@ namespace DAL.DAL
             result = context.ADMIN.FirstOrDefault(m => m.TAIKHOAN == pMa); 
             return result;
         }
+
+        public ADMIN GetDVByMa(string username, string password)
+        {
+            ADMIN result = new ADMIN();
+            result = context.ADMIN.FirstOrDefault(m => m.TAIKHOAN == username);
+            return result;
+        }
+
     }
 }

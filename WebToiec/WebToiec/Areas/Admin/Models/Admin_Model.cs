@@ -12,6 +12,7 @@ namespace WebToiec.Areas.Admin.Models
         [DisplayName("ID")]
         public int ID { get; set; }
 
+        [Required]
         [DisplayName("Tài khoản")]
         public string Username { get; set; }
 

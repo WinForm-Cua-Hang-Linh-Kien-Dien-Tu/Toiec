@@ -296,9 +296,10 @@
     <Content Include="Areas\Admin\vendors\iconfonts\mdi\scss\_path.scss" />
     <Content Include="Areas\Admin\vendors\iconfonts\mdi\scss\_variables.scss" />
     <Content Include="Areas\Admin\Views\Home\About.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Create_Admin.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Showdata_Admin.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Update_Admin.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Create_Admin.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Login_Admin.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

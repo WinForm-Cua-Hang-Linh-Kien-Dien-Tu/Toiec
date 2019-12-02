@@ -68,7 +68,24 @@ namespace WebToiec.Areas.Admin.Controllers
                 TempData["Message"] = "Cập nhật thất bại";
                 return View();
             }
-            
+        }
+
+        public ActionResult Login_Admin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login_Admin(Admin_Model admin_Model)
+        {
+            var item = admin_DAL.GetDVByMa(admin_Model.Username);
+            if (item != null)
+            {
+                return View("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }
