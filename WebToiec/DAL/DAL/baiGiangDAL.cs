@@ -22,8 +22,11 @@ namespace DAL.DAL
             BAIGIANG k = context.BAIGIANG.FirstOrDefault(m => m.ID_BAIGIANG == pma.ID_BAIGIANG);
             if (k != null)
             {
-                k.ID_DANHSACH = pma.ID_DANHSACH;
+                k.ID_KH = pma.ID_KH;
                 k.NOI_DUNG_BAI_GIANG = pma.NOI_DUNG_BAI_GIANG;
+                k.DANH_GIA = pma.DANH_GIA;
+                k.GIANG_VIEN = pma.GIANG_VIEN;
+                k.ID_BAIGIANG = pma.ID_BAIGIANG;
                 k.VIDEO = pma.VIDEO;
                 k.PART = pma.PART;
             }
@@ -43,6 +46,13 @@ namespace DAL.DAL
         {
             List<BAIGIANG> list = new List<BAIGIANG>();
             list = context.BAIGIANG.ToList();
+            return list;
+        }
+
+        public List<BAIGIANG> GetListLimit()
+        {
+            List<BAIGIANG> list = new List<BAIGIANG>();
+            list = context.BAIGIANG.OrderByDescending(x => x.DANH_GIA).Take(3).ToList();
             return list;
         }
 

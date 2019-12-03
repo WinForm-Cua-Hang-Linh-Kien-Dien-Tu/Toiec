@@ -14,16 +14,33 @@ namespace WebToiec.Controllers
         khoaHocDAL khDAL = new khoaHocDAL();
         usersDAL uDAL = new usersDAL();
         tinTucDAL ttDAL = new tinTucDAL();
+        baiGiangDAL bgDAl = new baiGiangDAL();
 
         // GET: Default
         public ActionResult Index()
         {
-            List<KHOAHOC> kh = new List<KHOAHOC>();
-            kh = khDAL.GetList();
-            
-            ViewData["khoaHocs"] = kh;
+            GetBaiGiangs();
+            GetKhoaHocs();
             return View();
         }
+
+        #region Get Đủ Thứ
+        public void GetKhoaHocs()
+        {
+            List<KHOAHOC> kh = new List<KHOAHOC>();
+            kh = khDAL.GetListLimit();
+
+            ViewData["khoaHocs"] = kh;
+        }
+
+        public void GetBaiGiangs()
+        {
+            List<BAIGIANG> bg = new List<BAIGIANG>();
+            bg = bgDAl.GetListLimit();
+
+            ViewData["BaiGiangs"] = bg;
+        }
+        #endregion
 
         public ActionResult Home()
         {
@@ -95,9 +112,28 @@ namespace WebToiec.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult TinTuc(Model_TinTuc model)
+        {
+            List<TIN_TUC> tt = new List<TIN_TUC>();
+            if (model.TEN_TIN_TUC != null)
+            {
+                tt = ttDAL.GetList(model.TEN_TIN_TUC);
+                ViewData["khoaHocs"] = tt;
+            }
+            else
+            {
+                tt = ttDAL.GetList(model.NGAY_DANG);
+                ViewData["khoaHocs"] = tt;
+            }
+
+            return View();
+        }
+
         public ActionResult ChiTieTTinTuc(int id)
         {
             var item = ttDAL.GetDVByMa(id);
+            
             return View(item);
         }
 

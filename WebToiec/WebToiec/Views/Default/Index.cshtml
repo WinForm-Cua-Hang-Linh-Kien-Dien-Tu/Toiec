@@ -116,17 +116,17 @@
                                     <ul class="nav nav-justified image-tabs" id="course-tabs" role="tablist">
                                         <li role="presentation" class="summer-term active">
                                             <a href="#summer-term" aria-controls="summer-term" role="tab" data-toggle="tab" class="dark-overlay .half-opacity ">
-                                                <span>Toiec</span>
+                                                <span>Khóa Học</span>
                                             </a>
                                         </li>
                                         <li role="presentation" class="winter-term">
                                             <a href="#winter-term" aria-controls="winter-term" role="tab" data-toggle="tab" class="dark-overlay .half-opacity ">
-                                                <span>Giao Tiếp</span>
+                                                <span>Toiec</span>
                                             </a>
                                         </li>
                                         <li role="presentation" class="summer-term active">
                                             <a href="#online-learning" aria-controls="online-learning" role="tab" data-toggle="tab" class="dark-overlay .half-opacity ">
-                                                <span>Toiec Nâng Cao</span>
+                                                <span>Giao Tiếp</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -139,18 +139,18 @@
                                         <div role="tabpanel" class="tab-pane fade in active" id="summer-term">
                                             <div class="tab-inner">
                                                 <div class="row">
-                                                    @foreach (var kh in ViewData["khoaHocs"] as List<DAL.EF.KHOAHOC>)
+                                                    @foreach (var bg in ViewData["khoaHocs"] as List<DAL.EF.KHOAHOC>)
                                                     {
                                                         <div class="col-sm-12 mb40">
                                                             <div class="row">
                                                                 <div class="col-sm-10 col-xs-12">
-                                                                    <h5><span>@kh.TEN_KH</span></h5>
-                                                                    <p class="lead">@kh.THOI_GIAN Tháng</p>
+                                                                    <h5><span>@bg.TEN_KH</span></h5>
+                                                                    <p class="lead">@bg.THOI_GIAN Tháng</p>
                                                                     <p class="mb20">Mô Tả Khóa Học</p>
-                                                                    <a href="single-course.html" class="btn btn-primary btn-green">Chi Tiết Khóa Học</a>
+                                                                    @Html.ActionLink("Chi Tiết", "ChiTietCourse", new { id = bg.ID_KH }, new { @class = "btn btn-primary btn-green" })
                                                                 </div>
                                                                 <div class="col-sm-2 col-xs-12 text-right">
-                                                                    <h1><span>@kh.GIA_TIEN VND</span></h1>
+                                                                    <h1><span>@bg.GIA_TIEN VND</span></h1>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -162,18 +162,18 @@
                                         <div role="tabpanel" class="tab-pane fade" id="winter-term">
                                             <div class="tab-inner">
                                                 <div class="row">
-                                                    @foreach (var kh in ViewData["khoaHocs"] as List<DAL.EF.KHOAHOC>)
+                                                    @foreach (var kh in ViewData["BaiGiangs"] as List<DAL.EF.BAIGIANG>)
                                                     {
                                                         <div class="col-sm-12 mb40">
                                                             <div class="row">
                                                                 <div class="col-sm-10 col-xs-12">
-                                                                    <h5><span>@kh.TEN_KH</span></h5>
-                                                                    <p class="lead">@kh.THOI_GIAN Tháng</p>
-                                                                    <p class="mb20">Mô Tả Khóa Học</p>
-                                                                    <a href="single-course.html" class="btn btn-primary btn-green">Chi Tiết Khóa Học</a>
+                                                                    <h5><span>@kh.TEN_BAI_GIANG</span></h5>
+                                                                    <p class="lead">Giảng Viên: @kh.GIANG_VIEN</p>
+                                                                    <p class="mb20">Giới Thiệu Bài Giảng</p>
+                                                                    @Html.ActionLink("Chi Tiết", "GetBaiGiang", new { id = kh.ID_BAIGIANG }, new { @class = "btn btn-primary btn-green" })
                                                                 </div>
                                                                 <div class="col-sm-2 col-xs-12 text-right">
-                                                                    <h1><span>@kh.GIA_TIEN VND</span></h1>
+                                                                    <h1><span>@kh.DANH_GIA <i class="fa fa-star"></i></span></h1>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -187,48 +187,30 @@
                                                 <div class="row">
                                                     <div class="col-sm-12 mb40">
                                                         <div class="row">
-                                                            <div class="col-sm-10 col-xs-12">
-                                                                <h5><span>Photoshop Basics</span></h5>
-                                                                <p class="lead">16 week course.</p>
-                                                                <p class="mb20">Proactively parallel task vertical products for collaborative ideas. Monotonectally visualize functional functionalities vis-a-vis efficient products. Globally matrix bleeding-edge e-business with professional.</p>
-                                                                <a href="single-course.html" class="btn btn-primary btn-green">View Details</a>
-                                                            </div>
-                                                            <div class="col-sm-2 col-xs-12 text-right">
-                                                                <h1><span>$199</span></h1>
-                                                            </div>
+                                                            @foreach (var kh in ViewData["BaiGiangs"] as List<DAL.EF.BAIGIANG>)
+                                                            {
+                                                                <div class="col-sm-12 mb40">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-10 col-xs-12">
+                                                                            <h5><span>@kh.TEN_BAI_GIANG</span></h5>
+                                                                            <p class="lead">Giảng Viên: @kh.GIANG_VIEN</p>
+                                                                            <p class="mb20">Giới Thiệu Bài Giảng</p>
+                                                                            @Html.ActionLink("Chi Tiết", "GetBaiGiang", new { id = kh.ID_BAIGIANG }, new { @class = "btn btn-primary btn-green" })
+                                                                        </div>
+                                                                        <div class="col-sm-2 col-xs-12 text-right">
+                                                                            <h1><span>@kh.DANH_GIA <i class="fa fa-star"></i></span></h1>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
                                                         </div>
-                                                    </div>
-                                                    <div class="col-sm-12 mb40">
-                                                        <div class="row">
-                                                            <div class="col-sm-10 col-xs-12">
-                                                                <h5><span>Automotive Repair</span></h5>
-                                                                <p class="lead">16 week course.</p>
-                                                                <p class="mb20">Proactively parallel task vertical products for collaborative ideas. Monotonectally visualize functional functionalities vis-a-vis efficient products. Globally matrix bleeding-edge e-business with professional.</p>
-                                                                <a href="single-course.html" class="btn btn-primary btn-green">View Details</a>
-                                                            </div>
-                                                            <div class="col-sm-2 col-xs-12 text-right">
-                                                                <h1><span>$249</span></h1>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 mb40">
-                                                        <div class="row">
-                                                            <div class="col-sm-10 col-xs-12">
-                                                                <h5><span>Photography for Beginners</span></h5>
-                                                                <p class="lead">16 week course.</p>
-                                                                <p class="mb20">Proactively parallel task vertical products for collaborative ideas. Monotonectally visualize functional functionalities vis-a-vis efficient products. Globally matrix bleeding-edge e-business with professional.</p>
-                                                                <a href="single-course.html" class="btn btn-primary btn-green">View Details</a>
-                                                            </div>
-                                                            <div class="col-sm-2 col-xs-12 text-right">
-                                                                <h1><span>$199</span></h1>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                       
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                               </div>
+                             </div>
                             </div>
                         </div>
                     </div>
@@ -297,7 +279,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

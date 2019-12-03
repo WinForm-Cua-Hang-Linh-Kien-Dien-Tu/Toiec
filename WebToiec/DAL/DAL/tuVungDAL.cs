@@ -51,5 +51,13 @@ namespace DAL.DAL
             result = context.TUVUNG.FirstOrDefault(m => m.ID_TUVUNG == pMa);
             return result;
         }
+
+        public string GetTenTV(int pMa)
+        {
+            string result = context.TUVUNG.FirstOrDefault(m => m.ID_TUVUNG == pMa).TU;
+            return result;
+        }
+
+
     }
 }
