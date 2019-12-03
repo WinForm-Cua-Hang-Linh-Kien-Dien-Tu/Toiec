@@ -12,6 +12,7 @@ namespace DAL.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KHOAHOC()
         {
+            BAIGIANG = new HashSet<BAIGIANG>();
             USER_KHOAHOC = new HashSet<USER_KHOAHOC>();
         }
 
@@ -31,6 +32,12 @@ namespace DAL.EF
         public string VIDEO_GIOI_THIEU { get; set; }
 
         public int? DANH_GIA { get; set; }
+
+        [StringLength(100)]
+        public string lOAI_KH { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BAIGIANG> BAIGIANG { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USER_KHOAHOC> USER_KHOAHOC { get; set; }

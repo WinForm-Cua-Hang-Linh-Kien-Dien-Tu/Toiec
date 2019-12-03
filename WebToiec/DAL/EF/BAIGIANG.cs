@@ -21,7 +21,7 @@ namespace DAL.EF
         [Key]
         public int ID_BAIGIANG { get; set; }
 
-        public int? ID_DANHSACH { get; set; }
+        public int? ID_KH { get; set; }
 
         [Column(TypeName = "text")]
         public string NOI_DUNG_BAI_GIANG { get; set; }
@@ -34,7 +34,12 @@ namespace DAL.EF
         [StringLength(50)]
         public string GIANG_VIEN { get; set; }
 
-        public virtual DANHSACH_BAIGIANG DANHSACH_BAIGIANG { get; set; }
+        [StringLength(200)]
+        public string TEN_BAI_GIANG { get; set; }
+
+        public int? DANH_GIA { get; set; }
+
+        public virtual KHOAHOC KHOAHOC { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PART_1_2> PART_1_2 { get; set; }

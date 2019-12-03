@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "GetListBaiGiang";
+    Layout = "~/Views/Shared/_MasterLayoutPage.cshtml";
+}
+
+<header id="home" class="backstretched single-page-hero">
+    <div class="dark-overlay single-page-hero">
+        <div class="container single-page-hero">
+            <div class="vertical-center-js text-center">
+                <h1>Danh Sách Bài Giảng</h1>
+                <p class="section-sub-title"></p>
+            </div>
+        </div>
+    </div>
+</header>
+<section id="our-courses">
+    <div class="section-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="masonry-portfolio row">
+                        <ul class="masonry-portfolio-filter mb40 text-center list-inline wow fadeIn" data-wow-delay="0.2s">
+                            <li><a class="btn btn-primary btn-transparent active" href="#" data-filter="*">All</a></li>
+                            <li><a class="btn btn-primary btn-transparent" href="#" data-filter=".apps">0 - 450</a></li>
+                            <li><a class="btn btn-primary btn-transparent" href="#" data-filter=".design">450 - 650</a></li>
+                            <li><a class="btn btn-primary btn-transparent" href="#" data-filter=".photography">650 - 850</a></li>
+                            <li><a class="btn btn-primary btn-transparent" href="#" data-filter=".video">Giao Tiếp</a></li>
+                        </ul>
+
+                        <div class="masonry-portfolio-items">
+                            @foreach (var item in ViewData["BaiGiangs"] as List<DAL.EF.BAIGIANG>)
+                            {
+                                string loai = "";
+                                if (item.ID_KH == 1)
+                                {
+                                    loai = "apps";
+                                }
+                                else
+                                {
+                                    if (item.ID_KH == 2)
+                                    {
+                                        loai = "design";
+                                    }
+                                    else
+                                    {
+                                        if (item.ID_KH == 3)
+                                        {
+                                            loai = "photography";
+                                        }
+                                        else
+                                        {                          
+                                            loai = "video";
+                                        }
+                                    }
+                                }
+                            <div class="col-sm-6 masonry-portfolio-item @loai">
+                                <div class="mb40">
+                                    <div class="row">
+                                        <div class="col-sm-10 col-xs-12">
+                                            <h5><span>@item.TEN_BAI_GIANG</span></h5>
+                                            <p class="lead">Giảng Viên: @item.GIANG_VIEN</p>
+                                            <p class="mb20">@item.NOI_DUNG_BAI_GIANG</p>
+                                            @Html.ActionLink("Chi Tiết", "GetChiTietBaiGiang", new { id = item.ID_BAIGIANG }, new { @class = "btn btn-primary btn-green" })
+                                        </div>
+                                        <div class="col-sm-2 col-xs-12 text-right">
+                                            <h3><span>@item.DANH_GIA <i class="fa fa-star"></i></span></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

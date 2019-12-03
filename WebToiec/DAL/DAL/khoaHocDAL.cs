@@ -45,6 +45,13 @@ namespace DAL.DAL
             return list;
         }
 
+        public List<KHOAHOC> GetListLimit()
+        {
+            List<KHOAHOC> list = new List<KHOAHOC>();
+            list = context.KHOAHOC.OrderByDescending(x => x.DANH_GIA).Take(3).ToList();
+            return list;
+        }
+
         public KHOAHOC GetDVByMa(int pMa)
         {
             KHOAHOC result = new KHOAHOC();

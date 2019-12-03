@@ -41,10 +41,25 @@ namespace DAL.DAL
             result = context.SaveChanges();
             return result;
         }
+
         public List<TIN_TUC> GetList()
         {
             List<TIN_TUC> list = new List<TIN_TUC>();
             list = context.TIN_TUC.ToList();
+            return list;
+        }
+
+        public List<TIN_TUC> GetList(string pTen)
+        {
+            List<TIN_TUC> list = new List<TIN_TUC>();
+            list = context.TIN_TUC.Where(m => m.TEN_TIN_TUC.Contains(pTen)).ToList();
+            return list;
+        }
+
+        public List<TIN_TUC> GetList(DateTime? pNgayDang)
+        {
+            List<TIN_TUC> list = new List<TIN_TUC>();
+            list = context.TIN_TUC.Where(m => m.NGAY_DANG == pNgayDang).ToList();
             return list;
         }
 

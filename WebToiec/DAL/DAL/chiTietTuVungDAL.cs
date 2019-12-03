@@ -55,5 +55,12 @@ namespace DAL.DAL
             result = context.CHI_TIET_TU_VUNG.FirstOrDefault(m => m.ID == pMa);
             return result;
         }
+
+        public List<CHI_TIET_TU_VUNG> GetDVByMaChuDe(int pMa)
+        {
+            List<CHI_TIET_TU_VUNG> list = new List<CHI_TIET_TU_VUNG>();
+            list = context.CHI_TIET_TU_VUNG.Where(m => m.MA_CHU_DE == pMa).ToList();
+            return list;
+        }
     }
 }

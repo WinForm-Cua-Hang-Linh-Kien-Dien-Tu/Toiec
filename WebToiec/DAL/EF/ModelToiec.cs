@@ -18,7 +18,6 @@ namespace DAL.EF
         public virtual DbSet<CAUHOIPART_6_7> CAUHOIPART_6_7 { get; set; }
         public virtual DbSet<CHI_TIET_TU_VUNG> CHI_TIET_TU_VUNG { get; set; }
         public virtual DbSet<CHUDE_TUVUNG> CHUDE_TUVUNG { get; set; }
-        public virtual DbSet<DANHSACH_BAIGIANG> DANHSACH_BAIGIANG { get; set; }
         public virtual DbSet<DAP_AN> DAP_AN { get; set; }
         public virtual DbSet<KHOAHOC> KHOAHOC { get; set; }
         public virtual DbSet<PART_1_2> PART_1_2 { get; set; }

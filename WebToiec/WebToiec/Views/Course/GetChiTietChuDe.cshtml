@@ -1,0 +1,95 @@
+﻿@model DAL.EF.CHUDE_TUVUNG
+@{
+    ViewBag.Title = "GetChiTietChuDe";
+    Layout = "~/Views/Shared/_MasterLayoutPage.cshtml";
+}
+
+<header id="home" class="backstretched single-page-hero">
+    <div class="dark-overlay single-page-hero">
+        <div class="container single-page-hero">
+            <div class="vertical-center-js text-center">
+                <h1>@Model.TEN_CHU_DE</h1>
+                <p class="section-sub-title">Danh Sách Từ Vựng Của Chủ Đề</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="about-us">
+    <div class="section-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    @Html.ActionLink("Learn", "HocTuVung", "Course", new { id = 1 }, new { @class = "btn btn-primary btn-green" })
+                    <table class="table table-hover table-responsive table-condensed">
+                        <tr>
+                            <th>
+                                STT
+                            </th>
+                            <th>
+                                Từ
+                            </th>
+                            <th>
+                                Nghĩa Của Từ
+                            </th>
+                            <th>
+                                Loại Từ
+                            </th>
+                            <th>
+                                Phát Âm
+                            </th>
+                            <th>
+                                Phiên Âm
+                            </th>
+
+                            <th>
+                                Ví Dụ
+                            </th>
+
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Session["TuVung"] as List<WebToiec.Models.Model_TuVung>)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ID_TuVung)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tu_Vung)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NGHIA_CUA_TU)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TheLoai)
+                                </td>
+                                <td>
+                                    <audio style="display:none" id="player" controls>
+                                        <source src="~/Resource/Voice/AMV – Make It Rock .mp3" type="audio/mpeg">
+                                    </audio>
+                                    <div>
+                                        <a class="btn btn-danger" onclick="document.getElementById('player').play()"><i class='fa fa-volume-up fa-2x'></i></a>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PHIEN_AM)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VI_DU)
+                                </td>
+
+                            </tr>
+                        }
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div>
+    
+</div>

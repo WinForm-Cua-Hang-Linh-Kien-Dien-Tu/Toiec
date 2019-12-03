@@ -56,7 +56,6 @@
     <Compile Include="DAL\cauHoi_3_4DAL.cs" />
     <Compile Include="DAL\chiTietTuVungDAL.cs" />
     <Compile Include="DAL\chuDeTuVungDAL.cs" />
-    <Compile Include="DAL\danhSachBaiGiangDAL.cs" />
     <Compile Include="DAL\dapAnDAL.cs" />
     <Compile Include="DAL\DBContext.cs" />
     <Compile Include="DAL\khoaHocDAL.cs" />
@@ -76,7 +75,6 @@
     <Compile Include="EF\CAUHOI_3_4.cs" />
     <Compile Include="EF\CHI_TIET_TU_VUNG.cs" />
     <Compile Include="EF\CHUDE_TUVUNG.cs" />
-    <Compile Include="EF\DANHSACH_BAIGIANG.cs" />
     <Compile Include="EF\DAP_AN.cs" />
     <Compile Include="EF\KHOAHOC.cs" />
     <Compile Include="EF\ModelToiec.cs" />

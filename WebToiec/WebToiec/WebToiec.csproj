@@ -137,6 +137,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Model_KhoaHoc.cs" />
+    <Compile Include="Models\Model_TinTuc.cs" />
+    <Compile Include="Models\Model_TuVung.cs" />
     <Compile Include="Models\Model_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -318,6 +320,7 @@
     <Content Include="Login_v15\vendor\select2\select2.js" />
     <Content Include="Login_v15\vendor\select2\select2.min.css" />
     <Content Include="Login_v15\vendor\select2\select2.min.js" />
+    <Content Include="Resource\Voice\AMV – Make It Rock .mp3" />
     <Content Include="Scripts\bigvideo.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -491,13 +494,6 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\plugins.js" />
     <Content Include="Scripts\plugins.min.js" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -511,12 +507,20 @@
     <Content Include="Views\Default\TinTuc.cshtml" />
     <Content Include="Views\Default\ChiTieTTinTuc.cshtml" />
     <Content Include="Views\Course\ChiTietCourse.cshtml" />
-    <Content Include="Views\Course\GetBaiGiang.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Course\GetListBaiGiang.cshtml" />
+    <Content Include="Views\Course\GetChiTietBaiGiang.cshtml" />
+    <Content Include="Views\Course\GetListChuDe.cshtml" />
+    <Content Include="Views\Course\GetChiTietChuDe.cshtml" />
+    <Content Include="Views\Course\TuVung.cshtml" />
+    <Content Include="Views\Course\HocTuVung.cshtml" />
+    <Content Include="Views\Shared\_TuVungPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Resource\Image\" />
     <Folder Include="Resource\Video\" />
   </ItemGroup>
   <ItemGroup>
