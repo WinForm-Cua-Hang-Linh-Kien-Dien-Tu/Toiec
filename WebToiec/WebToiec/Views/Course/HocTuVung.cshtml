@@ -5,6 +5,38 @@
     Layout = "~/Views/Shared/_MasterLayoutPage.cshtml";
 }
 
+<section id="our-courses">
+    <div class="section-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb40">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="hover-effect smoothie mb40">
+                                <a href="#" class="smoothie">
+                                    <img src="~/assets/images/blog-1.jpeg" alt="Image" class="img-responsive smoothie">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-8">
+                            <h2 class="mt0 mb40">@Model.Tu_Vung</h2>
+                            <p class="mb20">@Model.PHIEN_AM (@Model.TheLoai)</p>
+                            <p class="mb20">
+                                <audio controls>
+                                    <source src="~/Resource/Voice/AMV – Make It Rock .mp3" type="audio/mpeg">
+                                </audio>
+                            </p>
+                            <p class="mb20">@Model.NGHIA_CUA_TU</p>
+                            <p class="mb20">@Model.VI_DU</p>
 
-@Html.Partial("_TuVungPartial",Model)
+                            @Html.ActionLink("Back", "HocTuVung", "Course", new { id = Model.ID_TuVung - 1 }, new { @class = "btn btn-primary btn-green" })
+                            @Html.ActionLink("Next", "HocTuVung", "Course", new { id = Model.ID_TuVung + 1 }, new { @class = "btn btn-primary btn-green" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
 

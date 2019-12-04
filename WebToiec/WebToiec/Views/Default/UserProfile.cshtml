@@ -1,0 +1,37 @@
+﻿@model DAL.EF.USERS_PROFILE
+    @{
+        ViewBag.Title = "UserProfile";
+        Layout = "~/Views/Shared/_MasterLayoutPage.cshtml";
+    }
+
+
+    <header id="home" class="backstretched single-page-hero">
+        <div class="dark-overlay single-page-hero">
+            <div class="container single-page-hero">
+                <div class="vertical-center-js text-center">
+                    <h1>Thông Tin Cá Nhân</h1>
+                    <p class="section-sub-title"></p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section id="about-us">
+        <div class="section-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <p class="lead mb40">@Model.USERS</p>
+                        <p class="lead mb40">@Model.HOTEN</p>
+                        <p class="lead mb40">@Model.NGAYSINH</p>
+                        <p class="lead mb40">@Model.NGHENGHIEP</p>
+                        <p class="lead mb40">@Model.THANHPHO</p>
+                        <p class="lead mb40">@Model.SDT</p>
+                        <p class="lead mb40">@Model.GIOITINH</p>
+                        <p class="lead mb40">@Model.EMAIL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

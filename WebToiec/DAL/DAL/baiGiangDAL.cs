@@ -16,6 +16,7 @@ namespace DAL.DAL
             result = context.SaveChanges();
             return result;
         }
+
         public int Update(BAIGIANG pma)
         {
             int result = 0;
@@ -42,10 +43,18 @@ namespace DAL.DAL
             result = context.SaveChanges();
             return result;
         }
+
         public List<BAIGIANG> GetList()
         {
             List<BAIGIANG> list = new List<BAIGIANG>();
             list = context.BAIGIANG.ToList();
+            return list;
+        }
+
+        public List<BAIGIANG> GetList(int idkh)
+        {
+            List<BAIGIANG> list = new List<BAIGIANG>();
+            list = context.BAIGIANG.Where(m => m.ID_KH == idkh).ToList();
             return list;
         }
 

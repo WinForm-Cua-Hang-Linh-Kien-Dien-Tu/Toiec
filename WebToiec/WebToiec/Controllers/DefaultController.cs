@@ -15,6 +15,7 @@ namespace WebToiec.Controllers
         usersDAL uDAL = new usersDAL();
         tinTucDAL ttDAL = new tinTucDAL();
         baiGiangDAL bgDAl = new baiGiangDAL();
+        userProfileDAL uProfileDAL = new userProfileDAL();
 
         // GET: Default
         public ActionResult Index()
@@ -59,6 +60,7 @@ namespace WebToiec.Controllers
             if (item != null)
             {
                 Session["tenTK"] = item.TAI_KHOAN_USER;
+                Session["UserId"] = item.USERID;
                 return RedirectToAction("Index");
             }
             else
@@ -103,6 +105,22 @@ namespace WebToiec.Controllers
            
         }
 
+        public ActionResult UserProfile()
+        {
+            int id = Convert.ToInt32(Session["UserId"]);
+            var user = uProfileDAL.GetDVByMa(id);
+            return View(user);
+        }
+
+        public ActionResult LogOut()
+        {
+            Session.Remove("UserId");
+            Session.Remove("tenTK");
+            Index();
+            return View("Index");
+        }
+
+        #region Tin Tức
         public ActionResult TinTuc()
         {
             List<TIN_TUC> tt = new List<TIN_TUC>();
@@ -136,6 +154,7 @@ namespace WebToiec.Controllers
             
             return View(item);
         }
+        #endregion
 
     }
 }

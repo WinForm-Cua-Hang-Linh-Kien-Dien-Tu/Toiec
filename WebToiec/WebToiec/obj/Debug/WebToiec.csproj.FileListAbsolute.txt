@@ -1,3 +1,4 @@
+E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\obj\Debug\WebToiec.csproj.CoreCompileInputs.cache
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\WebToiec.dll.config
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\WebToiec.dll
@@ -8,7 +9,6 @@ E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\csc.rsp
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\csi.exe
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\csi.rsp
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\Microsoft.CodeAnalysis.dll
 E:\Hoc\visual\MVC ASP.Net\Toiec\WebToiec\WebToiec\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll

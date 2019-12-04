@@ -14,6 +14,7 @@
         </div>
     </div>
 </header>
+
 <section id="our-courses">
     <div class="section-inner">
         <div class="container">
@@ -29,31 +30,33 @@
                         </ul>
 
                         <div class="masonry-portfolio-items">
-                            @foreach (var item in ViewData["BaiGiangs"] as List<DAL.EF.BAIGIANG>)
+                            @if (TempData["model_BG"] != null)
                             {
-                                string loai = "";
-                                if (item.ID_KH == 1)
+                                foreach (var item in TempData["model_BG"] as List<WebToiec.Models.Model_BaiGiang>)
                                 {
-                                    loai = "apps";
-                                }
-                                else
-                                {
-                                    if (item.ID_KH == 2)
+                                    string loai = "";
+                                    if (item.ID_KH == 1)
                                     {
-                                        loai = "design";
+                                        loai = "apps";
                                     }
                                     else
                                     {
-                                        if (item.ID_KH == 3)
+                                        if (item.ID_KH == 2)
                                         {
-                                            loai = "photography";
+                                            loai = "design";
                                         }
                                         else
-                                        {                          
-                                            loai = "video";
+                                        {
+                                            if (item.ID_KH == 3)
+                                            {
+                                                loai = "photography";
+                                            }
+                                            else
+                                            {
+                                                loai = "video";
+                                            }
                                         }
                                     }
-                                }
                             <div class="col-sm-6 masonry-portfolio-item @loai">
                                 <div class="mb40">
                                     <div class="row">
@@ -69,7 +72,12 @@
                                     </div>
                                 </div>
                             </div>
-                                
+
+                                }
+                            }
+                            else
+                            {
+                                <h1>Bạn Chưa Có Đăng Ký Khóa Học Nào</h1>
                             }
                         </div>
                     </div>
