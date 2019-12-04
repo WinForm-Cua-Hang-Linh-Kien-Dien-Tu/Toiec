@@ -16,6 +16,8 @@ namespace WebToiec.Controllers
         chuDeTuVungDAL chuDeDAL = new chuDeTuVungDAL();
         tuVungDAL tvungDAL = new tuVungDAL();
         chiTietTuVungDAL chiTietTuDAL = new chiTietTuVungDAL();
+        user_KhoaHocDAL user_KhoaDAL = new user_KhoaHocDAL();
+        user_BaiGiangDAL user_BgDAL = new user_BaiGiangDAL(); 
 
         // GET: Coures
         public ActionResult IndexCourse()
@@ -26,12 +28,63 @@ namespace WebToiec.Controllers
             return View();
         }
 
+        #region Khóa Học
         public ActionResult ChiTietCourse(int id)
         {
             var item = khDAL.GetDVByMa(id);
+            TempData["DSBaiGiangKH"] = bgDAl.GetList(id);
 
             return View(item);
         }
+
+        /// <summary>
+        /// Đăng Ký Khóa Học
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult ChiTietCourse(int id, string userId)
+        {
+            try
+            {
+                userId = Session["UserId"].ToString();
+                var DSuserbaiGiang = bgDAl.GetList(id);
+                if (userId != null)
+                {
+                    USER_KHOAHOC model = new USER_KHOAHOC();
+                    model.ID_KH = id;
+                    model.USERID = Convert.ToInt32(userId);
+                    model.TrangThai = "Chưa Hoàn Thành";
+
+                    foreach(var item in DSuserbaiGiang)
+                    {
+                        USER_BAIGIANG u = new USER_BAIGIANG
+                        {
+                            USERID = Convert.ToInt32(userId),
+                            ID_BAIGIANG = item.ID_BAIGIANG,
+                            TRANG_THAI = "Chưa Hoàn Thành"
+                        };
+
+                        int kq2 = user_BgDAL.Add(u);
+                    }
+                    int kq = user_KhoaDAL.Add(model);
+                    return RedirectToAction("IndexCourse", "Course");
+
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Default");
+                }
+            }
+            catch
+            {
+                return RedirectToAction("IndexCourse", "Course");
+            }
+        }
+
+
+        #endregion
 
         #region Get Đủ Thứ
         public void GetKhoaHocs()
@@ -49,6 +102,7 @@ namespace WebToiec.Controllers
 
             ViewData["BaiGiangs"] = bg;
         }
+
 
         public void GetChuDeTuVung()
         {
@@ -86,11 +140,40 @@ namespace WebToiec.Controllers
         }
         #endregion
 
+        #region Bài Giảng
         public ActionResult GetListBaiGiang()
         {
-            GetBaiGiangs();
+            if (Session["UserId"] != null)
+            {
+                int userId = Convert.ToInt32(Session["UserId"].ToString());
+                var DSuserbaiGiang = user_BgDAL.GetList(userId);
+                List<Model_BaiGiang> baiGiangs = new List<Model_BaiGiang>();
 
-            return View();
+                foreach (var item in DSuserbaiGiang)
+                {
+                    var bg = bgDAl.GetDVByMa(item.ID_BAIGIANG);
+                    Model_BaiGiang model = new Model_BaiGiang
+                    {
+                        ID_BAIGIANG = bg.ID_BAIGIANG,
+                        ID_KH = bg.ID_KH,
+                        NOI_DUNG_BAI_GIANG = bg.NOI_DUNG_BAI_GIANG,
+                        VIDEO = bg.VIDEO,
+                        PART = bg.PART,
+                        GIANG_VIEN = bg.GIANG_VIEN,
+                        TEN_BAI_GIANG = bg.TEN_BAI_GIANG,
+                        DANH_GIA = bg.DANH_GIA
+                    };
+
+                    baiGiangs.Add(model);
+                }
+                TempData["model_BG"] = baiGiangs;
+
+                return View();
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult GetChiTietBaiGiang(int id)
@@ -106,7 +189,9 @@ namespace WebToiec.Controllers
                 return RedirectToAction("Login","Default");
             }
         }
+        #endregion
 
+        #region Học Từ Vựng
         public ActionResult GetListChuDe()
         {
             GetChuDeTuVung();
@@ -126,16 +211,22 @@ namespace WebToiec.Controllers
         {
             var listTV = Session["TuVung"] as List<Model_TuVung>;
             var item = listTV.FirstOrDefault(m => m.ID_TuVung == id);
+
             return View(item);
         }
 
-        public PartialViewResult TuVung(int id)
+        public ActionResult TuVung(int id)
         {
             var listTV = Session["TuVung"] as List<Model_TuVung>;
             var item = listTV.FirstOrDefault(m => m.ID_TuVung == id);
 
-            return PartialView(item);
-            
+            return Json(item, JsonRequestBehavior.AllowGet);
         }
+        #endregion
+
+        #region Bài Tập
+        
+        #endregion
+
     }
 }

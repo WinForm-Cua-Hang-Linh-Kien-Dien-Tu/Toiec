@@ -72,18 +72,7 @@
                                 <li>
                                     @Html.ActionLink("Khóa Học", "IndexCourse", "Course")
                                 </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bài Giảng<span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            @Html.ActionLink("Level 0 - 450", "GetListBaiGiang", "Course")
-                                        </li>
-                                        <li>@Html.ActionLink("Level 450 - 650", "GetListBaiGiang", "Course")</li>
-                                        <li>@Html.ActionLink("Level 650 - 850", "GetListBaiGiang", "Course")</li>
-                                        <li>@Html.ActionLink("Higher Level 850", "GetListBaiGiang", "Course")</li>
-                                        <li>@Html.ActionLink("Tiếng Anh Giao Tiếp", "GetListBaiGiang", "Course")</li>
-                                    </ul>
-                                </li>
+                                
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Học<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
@@ -95,16 +84,24 @@
                                     @Html.ActionLink("Tin Tức", "TinTuc", "Default")
                                 </li>
 
-                                <li>
-                                    @if (Session["tenTK"] == null)
-                                    {
+
+                                @if (Session["tenTK"] == null)
+                                {
+                                    <li>
                                         @Html.ActionLink("Login", "Login", "Default")
-                                    }
-                                    else
-                                    {
-                                        @Html.ActionLink(Session["tenTK"].ToString(), "Login", "Default")
-                                    }
-                                </li>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Session["tenTK"].ToString()<span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li>@Html.ActionLink("Thông Tin Cá Nhân", "UserProfile", "Default")</li>
+                                            <li>@Html.ActionLink("Log Out", "LogOut", "Default")</li>
+                                        </ul>
+                                    </li>
+                                }
+
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
                                 </li>

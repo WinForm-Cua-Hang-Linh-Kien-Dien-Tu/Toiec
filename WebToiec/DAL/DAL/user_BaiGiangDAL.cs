@@ -38,10 +38,18 @@ namespace DAL.DAL
             result = context.SaveChanges();
             return result;
         }
+
         public List<USER_BAIGIANG> GetList()
         {
             List<USER_BAIGIANG> list = new List<USER_BAIGIANG>();
             list = context.USER_BAIGIANG.ToList();
+            return list;
+        }
+
+        public List<USER_BAIGIANG> GetList(int id)
+        {
+            List<USER_BAIGIANG> list = new List<USER_BAIGIANG>();
+            list = context.USER_BAIGIANG.Where(m => m.USERID == id).ToList();
             return list;
         }
 

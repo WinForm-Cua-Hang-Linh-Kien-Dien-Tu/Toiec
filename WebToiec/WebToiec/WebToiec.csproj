@@ -136,6 +136,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Model_BaiGiang.cs" />
     <Compile Include="Models\Model_KhoaHoc.cs" />
     <Compile Include="Models\Model_TinTuc.cs" />
     <Compile Include="Models\Model_TuVung.cs" />
@@ -512,9 +513,9 @@
     <Content Include="Views\Course\GetChiTietBaiGiang.cshtml" />
     <Content Include="Views\Course\GetListChuDe.cshtml" />
     <Content Include="Views\Course\GetChiTietChuDe.cshtml" />
-    <Content Include="Views\Course\TuVung.cshtml" />
     <Content Include="Views\Course\HocTuVung.cshtml" />
     <Content Include="Views\Shared\_TuVungPartial.cshtml" />
+    <Content Include="Views\Default\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
