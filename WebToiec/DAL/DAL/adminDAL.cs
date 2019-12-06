@@ -44,10 +44,10 @@ namespace DAL.DAL
             return list;
         }
 
-        public ADMIN GetDVByMa(int pMa)
+        public ADMIN GetDVByMa(string pUser, string pPass)
         {
             ADMIN result = new ADMIN();
-            result = context.ADMIN.FirstOrDefault(m => m.ID == pMa);
+            result = context.ADMIN.FirstOrDefault(m => m.TAIKHOAN == pUser && m.MATKHAU == pPass);
             return result;
         }
     }

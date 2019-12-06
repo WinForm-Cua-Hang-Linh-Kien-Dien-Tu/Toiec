@@ -1,0 +1,60 @@
+﻿@model IEnumerable<DAL.EF.CHUDE_TUVUNG>
+
+@{
+    ViewBag.Title = "ChuDeTV";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h2>Chủ Đề Từ Vựng</h2>
+        <p>
+            @Html.ActionLink("Add New", "Add_ChuDe", "Home", new { @class = "btn btn-success" })
+        </p>
+        <table class="table table-striped table-condensed">
+            <tr>
+                <th>
+                    Mã Chủ Đề
+                </th>
+                <th>
+                    Tên Chủ Đề
+                </th>
+                <th>
+                    Tổng Số Từ
+                </th>
+                <th>
+                    Chức Năng
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MA_CHU_DE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TEN_CHU_DE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TONG_SO_TU)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit_ChuDe", "Home", new { id = item.MA_CHU_DE }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete", "Delete_ChuDe", "Home", new { id = item.MA_CHU_DE }, new { onclick = "return confirm ('Are You Sure ???');", @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccesMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+    </script>
+}

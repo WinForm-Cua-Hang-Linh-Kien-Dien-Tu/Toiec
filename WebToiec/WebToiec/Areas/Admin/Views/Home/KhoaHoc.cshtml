@@ -1,0 +1,79 @@
+﻿@model IEnumerable<DAL.EF.KHOAHOC>
+
+@{
+    ViewBag.Title = "KhoaHoc";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h2>Danh Sách Khóa Học</h2>
+        <p>
+            @Html.ActionLink("Add New", "Add_KhoaHoc", "Home", new { @class = "btn btn-success" })
+        </p>
+        <table class="table table-striped table-condensed">
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Tên Khóa Học
+                </th>
+                <th>
+                    Giá Tiền
+                </th>
+                <th>
+                    Thời Gian
+                </th>
+                <th>
+                   Loại Khóa Học
+                </th>
+                <th>
+                   Đánh Giá
+                </th>
+
+                <th>Chức Năng</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_KH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TEN_KH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GIA_TIEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.THOI_GIAN) tháng
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lOAI_KH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DANH_GIA) <i class="mdi mdi-star"></i>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detail", "Detail_KhoaHoc", "Home", new { id = item.ID_KH }, new { @class = "btn btn-gradient-info" })
+                        @Html.ActionLink("Edit", "Edit_KhoaHoc", "Home", new { id = item.ID_KH }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete", "Delete_KhoaHoc", "Home", new { id = item.ID_KH }, new { onclick = "return confirm ('Are You Sure ???');", @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>
+    </div>
+
+        @section scripts{
+            <script>
+        $(function () {
+            var successMessage = '@TempData["SuccesMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+            </script>
+        }

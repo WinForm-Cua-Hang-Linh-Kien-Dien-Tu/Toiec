@@ -10,6 +10,9 @@ namespace WebToiec.Models
 {
     public class Model_TuVung
     {
+        [DisplayName("ID")]
+        public int ID { get; set; }
+
         [DisplayName("ID Từ Vựng")]
         public int ID_TuVung { get; set; }
 
@@ -18,6 +21,9 @@ namespace WebToiec.Models
 
         [DisplayName("Mã Chủ Đề")]
         public int MA_CHU_DE { get; set; }
+
+        [DisplayName("Tên Chủ Đề")]
+        public string TEN_CHU_DE { get; set; }
 
         [DisplayName("Nghĩa Của Từ")]
         public string NGHIA_CUA_TU { get; set; }
@@ -35,8 +41,12 @@ namespace WebToiec.Models
         public string VI_DU { get; set; }
 
         [StringLength(100)]
+        [DisplayName("Hình Ảnh")]
         public string HIN_HANH { get; set; }
 
+        [DisplayName("Loại Từ Vựng")]
         public string TheLoai { get; set; }
     }
+
+
 }

@@ -34,7 +34,7 @@ namespace DAL.DAL
             return result;
         }
 
-        public int Delete(int pMa)
+        public int Delete(int? pMa)
         {
             int result = 0;
             CHI_TIET_TU_VUNG k = context.CHI_TIET_TU_VUNG.FirstOrDefault(m => m.ID == pMa);
@@ -42,6 +42,7 @@ namespace DAL.DAL
             result = context.SaveChanges();
             return result;
         }
+
         public List<CHI_TIET_TU_VUNG> GetList()
         {
             List<CHI_TIET_TU_VUNG> list = new List<CHI_TIET_TU_VUNG>();
@@ -49,10 +50,24 @@ namespace DAL.DAL
             return list;
         }
 
-        public CHI_TIET_TU_VUNG GetDVByMa(int pMa)
+        public List<CHI_TIET_TU_VUNG> GetList(int? id)
+        {
+            List<CHI_TIET_TU_VUNG> list = new List<CHI_TIET_TU_VUNG>();
+            list = context.CHI_TIET_TU_VUNG.Where(m=>m.ID_TUVUNG == id).ToList();
+            return list;
+        }
+
+        public CHI_TIET_TU_VUNG GetDVByMa(int? pMa)
         {
             CHI_TIET_TU_VUNG result = new CHI_TIET_TU_VUNG();
             result = context.CHI_TIET_TU_VUNG.FirstOrDefault(m => m.ID == pMa);
+            return result;
+        }
+
+        public CHI_TIET_TU_VUNG GetDVByMa(int pMaCD, int pMaTV)
+        {
+            CHI_TIET_TU_VUNG result = new CHI_TIET_TU_VUNG();
+            result = context.CHI_TIET_TU_VUNG.FirstOrDefault(m => m.ID_TUVUNG == pMaTV && m.MA_CHU_DE == pMaCD);
             return result;
         }
 

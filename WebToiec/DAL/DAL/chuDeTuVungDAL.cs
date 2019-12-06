@@ -44,11 +44,29 @@ namespace DAL.DAL
             return list;
         }
 
-        public CHUDE_TUVUNG GetDVByMa(int pMa)
+        public CHUDE_TUVUNG GetDVByMa(int? pMa)
         {
             CHUDE_TUVUNG result = new CHUDE_TUVUNG();
             result = context.CHUDE_TUVUNG.FirstOrDefault(m => m.MA_CHU_DE == pMa);
             return result;
+        }
+
+        public string GetTenCD(int pMa)
+        {
+            string result = context.CHUDE_TUVUNG.FirstOrDefault(m => m.MA_CHU_DE == pMa).TEN_CHU_DE;
+            return result;
+        }
+
+        public int GetMaCD(string pTen)
+        {
+            int result = context.CHUDE_TUVUNG.FirstOrDefault(m => m.TEN_CHU_DE == pTen).MA_CHU_DE;
+            return result;
+        }
+
+        public List<string> GetTenCD()
+        {
+            var result = from a in context.CHUDE_TUVUNG select a.TEN_CHU_DE;
+            return result.ToList();
         }
     }
 }

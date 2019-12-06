@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DAL.EF.TUVUNG>
+
+@{
+    ViewBag.Title = "TuVung";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h2>Danh Sách Từ Vựng</h2>
+        <p>
+            @Html.ActionLink("Add New", "Add_TuVung", "Home", new { @class = "btn btn-success" })
+            @Html.ActionLink("List Detail Vocabulary", "ToanBoChiTietTuVung", "Home", new { @class = "btn btn-secondary" })
+        </p>
+        <table class="table table-striped table-condensed">
+            <tr>
+                <th>
+                    Mã Từ Vựng
+                </th>
+                <th>
+                    Từ Vựng
+                </th>
+                <th>
+                    Loại Từ Vựng
+                </th>
+                <th>
+                    Chức Năng
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_TUVUNG)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TU)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.THELOAI)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detail", "ChiTietTuVung", "Home", new { id = item.ID_TUVUNG }, new { @class="btn btn-gradient-info" })
+                        @Html.ActionLink("Edit", "Edit_TuVung", "Home", new { id = item.ID_TUVUNG }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete", "Delete_TuVung", "Home", new { id = item.ID_TUVUNG }, new { onclick = "return confirm ('Are You Sure ???');", @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+        @section scripts{
+            <script>
+        $(function () {
+            var successMessage = '@TempData["SuccesMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+            </script>
+        }

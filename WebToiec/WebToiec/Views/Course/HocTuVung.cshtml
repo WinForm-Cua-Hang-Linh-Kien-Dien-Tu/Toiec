@@ -14,7 +14,7 @@
                         <div class="col-xs-4">
                             <div class="hover-effect smoothie mb40">
                                 <a href="#" class="smoothie">
-                                    <img src="~/assets/images/blog-1.jpeg" alt="Image" class="img-responsive smoothie">
+                                    <img src="~/assets/images/blog-1" alt="Image" class="img-responsive smoothie">
                                 </a>
                             </div>
                         </div>
@@ -22,15 +22,31 @@
                             <h2 class="mt0 mb40">@Model.Tu_Vung</h2>
                             <p class="mb20">@Model.PHIEN_AM (@Model.TheLoai)</p>
                             <p class="mb20">
-                                <audio controls>
-                                    <source src="~/Resource/Voice/AMV – Make It Rock .mp3" type="audio/mpeg">
+                                <audio style="display:none" id="player" controls>
+                                    <source src="~/Resource/Voice/@Model.PHAT_AM" type="audio/mpeg">
                                 </audio>
+                                <div>
+                                    <a class="btn btn-gradient-primary btn-rounded" onclick="document.getElementById('player').play()"><i class='mdi mdi-play-circle'></i></a>
+                                </div>
                             </p>
                             <p class="mb20">@Model.NGHIA_CUA_TU</p>
                             <p class="mb20">@Model.VI_DU</p>
-
-                            @Html.ActionLink("Back", "HocTuVung", "Course", new { id = Model.ID_TuVung - 1 }, new { @class = "btn btn-primary btn-green" })
-                            @Html.ActionLink("Next", "HocTuVung", "Course", new { id = Model.ID_TuVung + 1 }, new { @class = "btn btn-primary btn-green" })
+                            @if (Model.ID_TuVung == 1)
+                            {
+                                @Html.ActionLink("Next", "HocTuVung", "Course", new { id = Model.ID_TuVung + 1 }, new { @class = "btn btn-primary btn-green" })
+                            }
+                            else
+                            {
+                                if (Model.ID_TuVung == ViewBag.count)
+                                {
+                                    @Html.ActionLink("Back", "HocTuVung", "Course", new { id = Model.ID_TuVung - 1 }, new { @class = "btn btn-primary btn-green" })
+                                }
+                                else
+                                {
+                                @Html.ActionLink("Back", "HocTuVung", "Course", new { id = Model.ID_TuVung - 1 }, new { @class = "btn btn-primary btn-green" })
+                                @Html.ActionLink("Next", "HocTuVung", "Course", new { id = Model.ID_TuVung + 1 }, new { @class = "btn btn-primary btn-green" })
+                                }
+                            }
                         </div>
                     </div>
                 </div>
