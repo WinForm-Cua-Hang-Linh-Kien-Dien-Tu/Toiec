@@ -30,7 +30,7 @@ namespace DAL.DAL
             return result;
         }
 
-        public int Delete(int pMa)
+        public int Delete(int? pMa)
         {
             int result = 0;
             TUVUNG k = context.TUVUNG.FirstOrDefault(m => m.ID_TUVUNG == pMa);
@@ -45,7 +45,7 @@ namespace DAL.DAL
             return list;
         }
 
-        public TUVUNG GetDVByMa(int pMa)
+        public TUVUNG GetDVByMa(int? pMa)
         {
             TUVUNG result = new TUVUNG();
             result = context.TUVUNG.FirstOrDefault(m => m.ID_TUVUNG == pMa);
@@ -58,6 +58,11 @@ namespace DAL.DAL
             return result;
         }
 
+        public int GetMa(string pTen)
+        {
+            int result = context.TUVUNG.FirstOrDefault(m => m.TU == pTen).ID_TUVUNG;
+            return result;
+        }
 
     }
 }

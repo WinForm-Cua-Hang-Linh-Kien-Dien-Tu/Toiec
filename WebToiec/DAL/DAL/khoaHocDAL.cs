@@ -30,7 +30,7 @@ namespace DAL.DAL
             return result;
         }
 
-        public int Delete(int pMa)
+        public int Delete(int? pMa)
         {
             int result = 0;
             KHOAHOC k = context.KHOAHOC.FirstOrDefault(m => m.ID_KH == pMa);

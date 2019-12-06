@@ -11,13 +11,16 @@ namespace WebToiec.Controllers
 {
     public class CourseController : Controller
     {
-        khoaHocDAL khDAL = new khoaHocDAL();
-        baiGiangDAL bgDAl = new baiGiangDAL();
-        chuDeTuVungDAL chuDeDAL = new chuDeTuVungDAL();
-        tuVungDAL tvungDAL = new tuVungDAL();
-        chiTietTuVungDAL chiTietTuDAL = new chiTietTuVungDAL();
-        user_KhoaHocDAL user_KhoaDAL = new user_KhoaHocDAL();
-        user_BaiGiangDAL user_BgDAL = new user_BaiGiangDAL(); 
+        #region Các Biến Kết nối DAL
+        khoaHocDAL _KhoaHocDAL = new khoaHocDAL();
+        baiGiangDAL _baiGiangDAL = new baiGiangDAL();
+        chuDeTuVungDAL _chuDeDAL = new chuDeTuVungDAL();
+        tuVungDAL _tuVungDAL = new tuVungDAL();
+        chiTietTuVungDAL _chiTietTuVungDAL = new chiTietTuVungDAL();
+        user_KhoaHocDAL _user_KhoaHocDAL = new user_KhoaHocDAL();
+        user_BaiGiangDAL _user_BaiGiangDAL = new user_BaiGiangDAL(); 
+        part_1_2DAL _part_1_2DAL = new part_1_2DAL();
+        #endregion
 
         // GET: Coures
         public ActionResult IndexCourse()
@@ -31,8 +34,8 @@ namespace WebToiec.Controllers
         #region Khóa Học
         public ActionResult ChiTietCourse(int id)
         {
-            var item = khDAL.GetDVByMa(id);
-            TempData["DSBaiGiangKH"] = bgDAl.GetList(id);
+            var item = _KhoaHocDAL.GetDVByMa(id);
+            TempData["DSBaiGiangKH"] = _baiGiangDAL.GetList(id);
 
             return View(item);
         }
@@ -49,7 +52,7 @@ namespace WebToiec.Controllers
             try
             {
                 userId = Session["UserId"].ToString();
-                var DSuserbaiGiang = bgDAl.GetList(id);
+                var DSuserbaiGiang = _baiGiangDAL.GetList(id);
                 if (userId != null)
                 {
                     USER_KHOAHOC model = new USER_KHOAHOC();
@@ -66,9 +69,9 @@ namespace WebToiec.Controllers
                             TRANG_THAI = "Chưa Hoàn Thành"
                         };
 
-                        int kq2 = user_BgDAL.Add(u);
+                        int kq2 =_user_BaiGiangDAL.Add(u);
                     }
-                    int kq = user_KhoaDAL.Add(model);
+                    int kq = _user_KhoaHocDAL.Add(model);
                     return RedirectToAction("IndexCourse", "Course");
 
                 }
@@ -90,7 +93,7 @@ namespace WebToiec.Controllers
         public void GetKhoaHocs()
         {
             List<KHOAHOC> kh = new List<KHOAHOC>();
-            kh = khDAL.GetList();
+            kh = _KhoaHocDAL.GetList();
 
             ViewData["khoaHocs"] = kh;
         }
@@ -98,7 +101,7 @@ namespace WebToiec.Controllers
         public void GetBaiGiangs()
         {
             List<BAIGIANG> bg = new List<BAIGIANG>();
-            bg = bgDAl.GetList();
+            bg = _baiGiangDAL.GetList();
 
             ViewData["BaiGiangs"] = bg;
         }
@@ -107,20 +110,20 @@ namespace WebToiec.Controllers
         public void GetChuDeTuVung()
         {
             List<CHUDE_TUVUNG> cd = new List<CHUDE_TUVUNG>();
-            cd = chuDeDAL.GetList();
+            cd = _chuDeDAL.GetList();
 
             ViewData["ChuDes"] = cd;
         }
 
         public void GetDSTuVung(int id)
         {
-            var list_TuVung = chiTietTuDAL.GetDVByMaChuDe(id);
+            var list_TuVung = _chiTietTuVungDAL.GetDVByMaChuDe(id);
             int a = 1;
 
             List<Model_TuVung> model_TV = new List<Model_TuVung>();
             foreach (var tv in list_TuVung)
             {
-                var b = tvungDAL.GetDVByMa(tv.ID_TUVUNG);
+                var b = _tuVungDAL.GetDVByMa(tv.ID_TUVUNG);
                 var model = new Model_TuVung()
                 {
                     ID_TuVung = a,
@@ -146,12 +149,12 @@ namespace WebToiec.Controllers
             if (Session["UserId"] != null)
             {
                 int userId = Convert.ToInt32(Session["UserId"].ToString());
-                var DSuserbaiGiang = user_BgDAL.GetList(userId);
+                var DSuserbaiGiang =_user_BaiGiangDAL.GetList(userId);
                 List<Model_BaiGiang> baiGiangs = new List<Model_BaiGiang>();
 
                 foreach (var item in DSuserbaiGiang)
                 {
-                    var bg = bgDAl.GetDVByMa(item.ID_BAIGIANG);
+                    var bg = _baiGiangDAL.GetDVByMa(item.ID_BAIGIANG);
                     Model_BaiGiang model = new Model_BaiGiang
                     {
                         ID_BAIGIANG = bg.ID_BAIGIANG,
@@ -180,8 +183,8 @@ namespace WebToiec.Controllers
         {
             if (Session["tenTK"] != null)
             {
-                var item = bgDAl.GetDVByMa(id);
-
+                var item = _baiGiangDAL.GetDVByMa(id);
+                Session["idBaiGiang"] = id;
                 return View(item);
             }
             else
@@ -201,9 +204,9 @@ namespace WebToiec.Controllers
 
         public ActionResult GetChiTietChuDe(int id)
         {
-            var item_chuDe = chuDeDAL.GetDVByMa(id);
+            var item_chuDe = _chuDeDAL.GetDVByMa(id);
             GetDSTuVung(id);
-
+           
             return View(item_chuDe);
         }
 
@@ -211,21 +214,45 @@ namespace WebToiec.Controllers
         {
             var listTV = Session["TuVung"] as List<Model_TuVung>;
             var item = listTV.FirstOrDefault(m => m.ID_TuVung == id);
-
+            ViewBag.count = listTV.Count();
             return View(item);
         }
 
-        public ActionResult TuVung(int id)
-        {
-            var listTV = Session["TuVung"] as List<Model_TuVung>;
-            var item = listTV.FirstOrDefault(m => m.ID_TuVung == id);
-
-            return Json(item, JsonRequestBehavior.AllowGet);
-        }
         #endregion
 
         #region Bài Tập
-        
+        public void DSBaiTap_Part_12(int id)
+        {
+            var DSCauHoi = _part_1_2DAL.GetCauHoiBG(id);
+            int a = 1;
+
+            List<Model_BaiTap> model_CH = new List<Model_BaiTap>();
+            foreach (var tv in DSCauHoi)
+            {
+                var ch = _part_1_2DAL.GetDVByMa(tv.ID_CAU_PART1_2);
+                var model = new Model_BaiTap()
+                {
+                    ID_BAIGIANG = id,
+                    ID_CauHoi = a,
+                    HINH = ch.HINH,
+                    AM_THANH = ch.AM_THANH,
+                    TEXT = ch.TEXT,
+                    DAP_AN_DUNG = ch.DAP_AN_DUNG
+                };
+                model_CH.Add(model);
+                a++;
+            }
+            Session["BaiTap_12"] = model_CH;
+        }
+
+        public ActionResult BaiTapBG_Part_12(int id)
+        {
+            int idBG = Convert.ToInt32(Session["idBaiGiang"]);
+            DSBaiTap_Part_12(idBG);
+            var DSCauHoi = Session["BaiTap_12"] as List<Model_BaiTap>;
+            var item = DSCauHoi.FirstOrDefault(m=>m.ID_CauHoi == id);
+            return View(item);
+        }
         #endregion
 
     }

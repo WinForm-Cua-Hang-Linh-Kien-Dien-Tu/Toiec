@@ -1,0 +1,41 @@
+﻿@model WebToiec.Models.Model_BaiTap
+@{
+    ViewBag.Title = "BaiTapBG_Part_12";
+    Layout = "~/Views/Shared/_MasterLayoutPage.cshtml";
+}
+
+<section id="about-us">
+    <div class="section-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <p class="lead mb40">Câu: @Model.ID_CauHoi</p>
+                    @if (Model.Part == 1)
+                    {
+                        <p class="lead mb40">
+                            <img src="~/assets/images/blog-1.jpeg" alt="Image" class="img-responsive smoothie">
+                        </p>
+                    }
+                    <p class="lead mb40">
+
+                        <audio controls>
+                            <source src="~/Resource/Voice/AMV – Make It Rock .mp3" type="audio/mpeg">
+                        </audio>
+                    </p>
+                    <p class="lead mb40 btn btn-default">A</p>
+                    <p class="lead mb40 btn btn-default">B</p>
+                    <p class="lead mb40 btn btn-default">C</p>
+                    <p class="lead mb40 btn btn-default">D</p>
+
+                    <p class="lead mb40 btn btn-default">@Model.TEXT</p>
+                    <br />
+                    @Html.ActionLink("Back", "BaiTapBG_Part_12", "Course", new { id = Model.ID_CauHoi - 1 }, new { @class = "btn btn-primary btn-green" })
+                    @Html.ActionLink("Next", "BaiTapBG_Part_12", "Course", new { id = Model.ID_CauHoi + 1 }, new { @class = "btn btn-primary btn-green" })
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

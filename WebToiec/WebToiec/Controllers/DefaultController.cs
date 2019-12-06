@@ -11,11 +11,12 @@ namespace WebToiec.Controllers
 {
     public class DefaultController : Controller
     {
-        khoaHocDAL khDAL = new khoaHocDAL();
-        usersDAL uDAL = new usersDAL();
-        tinTucDAL ttDAL = new tinTucDAL();
-        baiGiangDAL bgDAl = new baiGiangDAL();
-        userProfileDAL uProfileDAL = new userProfileDAL();
+        khoaHocDAL _khoaHocDAL = new khoaHocDAL();
+        usersDAL _usersDAL = new usersDAL();
+        tinTucDAL _tinTucDAL = new tinTucDAL();
+        baiGiangDAL _baiGiangDAL = new baiGiangDAL();
+        userProfileDAL _userProfileDAL = new userProfileDAL();
+        adminDAL _adminDAL = new adminDAL();
 
         // GET: Default
         public ActionResult Index()
@@ -29,7 +30,7 @@ namespace WebToiec.Controllers
         public void GetKhoaHocs()
         {
             List<KHOAHOC> kh = new List<KHOAHOC>();
-            kh = khDAL.GetListLimit();
+            kh = _khoaHocDAL.GetListLimit();
 
             ViewData["khoaHocs"] = kh;
         }
@@ -37,7 +38,7 @@ namespace WebToiec.Controllers
         public void GetBaiGiangs()
         {
             List<BAIGIANG> bg = new List<BAIGIANG>();
-            bg = bgDAl.GetListLimit();
+            bg = _baiGiangDAL.GetListLimit();
 
             ViewData["BaiGiangs"] = bg;
         }
@@ -56,7 +57,8 @@ namespace WebToiec.Controllers
         [HttpPost]
         public ActionResult Login(Model_User model)
         {
-            var item = uDAL.GetItem(model.TAI_KHOAN_USER, model.MAT_KHAU_USER);
+            var item = _usersDAL.GetItem(model.TAI_KHOAN_USER, model.MAT_KHAU_USER);
+            var admin = _adminDAL.GetDVByMa(model.TAI_KHOAN_USER, model.MAT_KHAU_USER);
             if (item != null)
             {
                 Session["tenTK"] = item.TAI_KHOAN_USER;
@@ -65,8 +67,17 @@ namespace WebToiec.Controllers
             }
             else
             {
-                TempData["Message"] = "Bạn Nhập Sai Tài Khoản Hoặc Mật Khẩu. Vui Lòng Nhập Lại";
-                return View();
+                if (admin != null)
+                {
+                    Session["tenTK"] = admin.TAIKHOAN;
+                    Session["UserId"] = admin.ID;
+                    return RedirectToAction("Index", "Home", new { area = "Admin" });
+                }
+                else
+                {
+                    TempData["Message"] = "Bạn Nhập Sai Tài Khoản Hoặc Mật Khẩu. Vui Lòng Nhập Lại";
+                    return View();
+                }
             }
         }
 
@@ -83,10 +94,10 @@ namespace WebToiec.Controllers
             user.MAT_KHAU_USER = model.MAT_KHAU_USER;
             user.NGAY_TAO = DateTime.Now;
 
-            int kt = uDAL.GetItem(user.TAI_KHOAN_USER);
+            int kt = _usersDAL.GetItem(user.TAI_KHOAN_USER);
             if (kt == 0)
             {
-                int kq = uDAL.Add(user);
+                int kq = _usersDAL.Add(user);
                 if (kq == 1)
                 {
                     return RedirectToAction("Login");
@@ -108,7 +119,7 @@ namespace WebToiec.Controllers
         public ActionResult UserProfile()
         {
             int id = Convert.ToInt32(Session["UserId"]);
-            var user = uProfileDAL.GetDVByMa(id);
+            var user = _userProfileDAL.GetDVByMa(id);
             return View(user);
         }
 
@@ -124,7 +135,7 @@ namespace WebToiec.Controllers
         public ActionResult TinTuc()
         {
             List<TIN_TUC> tt = new List<TIN_TUC>();
-            tt = ttDAL.GetList();
+            tt = _tinTucDAL.GetList();
 
             ViewData["khoaHocs"] = tt;
             return View();
@@ -136,12 +147,12 @@ namespace WebToiec.Controllers
             List<TIN_TUC> tt = new List<TIN_TUC>();
             if (model.TEN_TIN_TUC != null)
             {
-                tt = ttDAL.GetList(model.TEN_TIN_TUC);
+                tt = _tinTucDAL.GetList(model.TEN_TIN_TUC);
                 ViewData["khoaHocs"] = tt;
             }
             else
             {
-                tt = ttDAL.GetList(model.NGAY_DANG);
+                tt = _tinTucDAL.GetList(model.NGAY_DANG);
                 ViewData["khoaHocs"] = tt;
             }
 
@@ -150,7 +161,7 @@ namespace WebToiec.Controllers
 
         public ActionResult ChiTieTTinTuc(int id)
         {
-            var item = ttDAL.GetDVByMa(id);
+            var item = _tinTucDAL.GetDVByMa(id);
             
             return View(item);
         }

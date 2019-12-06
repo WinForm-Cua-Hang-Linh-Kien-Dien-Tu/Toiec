@@ -19,6 +19,12 @@ namespace WebToiec
                 defaults: new { controller = "Default", action = "Index", id = UrlParameter.Optional }
             );
 
+            routes.MapRoute(
+                name: "Home",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "ChuDeTV", id = UrlParameter.Optional }
+            );
+
         }
     }
 }

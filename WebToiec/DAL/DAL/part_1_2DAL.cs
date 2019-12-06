@@ -54,5 +54,11 @@ namespace DAL.DAL
             result = context.PART_1_2.FirstOrDefault(m => m.ID_CAU_PART1_2 == pMa);
             return result;
         }
+
+        public List<PART_1_2> GetCauHoiBG(int pMa)
+        {
+            var result = context.PART_1_2.Where(m => m.ID_BAIGIANG == pMa).ToList();
+            return result;
+        }
     }
 }
