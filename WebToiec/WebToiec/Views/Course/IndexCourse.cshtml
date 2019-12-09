@@ -60,7 +60,7 @@
                                             <div class="col-sm-10 col-xs-12">
                                                 <h5><span>@item.TEN_KH</span></h5>
                                                 <p class="lead">Thời Gian: @item.THOI_GIAN tháng</p>
-                                                <p class="mb20">@item.GIOI_THIEU</p>
+                                               
                                                 @Html.ActionLink("Chi Tiết", "ChiTietCourse", new { id = item.ID_KH }, new { @class = "btn btn-primary btn-green" })
                                             </div>
                                             <div class="col-sm-2 col-xs-12 text-right">
@@ -79,3 +79,12 @@
         </div>
     </div>
 </section>
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccesMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+    </script>
+}

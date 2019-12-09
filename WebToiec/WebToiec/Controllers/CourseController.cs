@@ -51,29 +51,38 @@ namespace WebToiec.Controllers
         {
             try
             {
-                userId = Session["UserId"].ToString();
-                var DSuserbaiGiang = _baiGiangDAL.GetList(id);
-                if (userId != null)
+                if (Session["UserId"] != null)
                 {
-                    USER_KHOAHOC model = new USER_KHOAHOC();
-                    model.ID_KH = id;
-                    model.USERID = Convert.ToInt32(userId);
-                    model.TrangThai = "Chưa Hoàn Thành";
-
-                    foreach(var item in DSuserbaiGiang)
+                    userId = Session["UserId"].ToString();
+                    var DSuserbaiGiang = _baiGiangDAL.GetList(id);
+                    var kt = _user_KhoaHocDAL.GetDVByMa(id, Convert.ToInt32(userId));
+                    if (kt == null)
                     {
-                        USER_BAIGIANG u = new USER_BAIGIANG
+                        USER_KHOAHOC model = new USER_KHOAHOC();
+                        model.ID_KH = id;
+                        model.USERID = Convert.ToInt32(userId);
+                        model.TrangThai = "Chưa Hoàn Thành";
+
+                        foreach (var item in DSuserbaiGiang)
                         {
-                            USERID = Convert.ToInt32(userId),
-                            ID_BAIGIANG = item.ID_BAIGIANG,
-                            TRANG_THAI = "Chưa Hoàn Thành"
-                        };
+                            USER_BAIGIANG u = new USER_BAIGIANG
+                            {
+                                USERID = Convert.ToInt32(userId),
+                                ID_BAIGIANG = item.ID_BAIGIANG,
+                                TRANG_THAI = "Chưa Hoàn Thành"
+                            };
 
-                        int kq2 =_user_BaiGiangDAL.Add(u);
+                            int kq2 = _user_BaiGiangDAL.Add(u);
+                        }
+                        int kq = _user_KhoaHocDAL.Add(model);
+                        TempData["SuccesMessage"] = "Đăng Ký Khóa Học Thành Công";
+                        return RedirectToAction("IndexCourse", "Course");
                     }
-                    int kq = _user_KhoaHocDAL.Add(model);
-                    return RedirectToAction("IndexCourse", "Course");
-
+                    else
+                    {
+                        TempData["SuccesMessage"] = "Bạn Đã Đăng Ký Khóa Học Này";
+                        return RedirectToAction("IndexCourse", "Course");
+                    }
                 }
                 else
                 {
@@ -81,9 +90,7 @@ namespace WebToiec.Controllers
                 }
             }
             catch
-            {
-                return RedirectToAction("IndexCourse", "Course");
-            }
+            { return RedirectToAction("Index", "Default"); }
         }
 
 
@@ -94,7 +101,7 @@ namespace WebToiec.Controllers
         {
             List<KHOAHOC> kh = new List<KHOAHOC>();
             kh = _KhoaHocDAL.GetList();
-
+            
             ViewData["khoaHocs"] = kh;
         }
 
@@ -185,6 +192,7 @@ namespace WebToiec.Controllers
             {
                 var item = _baiGiangDAL.GetDVByMa(id);
                 Session["idBaiGiang"] = id;
+                Session["Part"] = item.PART;
                 return View(item);
             }
             else
@@ -215,6 +223,7 @@ namespace WebToiec.Controllers
             var listTV = Session["TuVung"] as List<Model_TuVung>;
             var item = listTV.FirstOrDefault(m => m.ID_TuVung == id);
             ViewBag.count = listTV.Count();
+
             return View(item);
         }
 
@@ -225,7 +234,7 @@ namespace WebToiec.Controllers
         {
             var DSCauHoi = _part_1_2DAL.GetCauHoiBG(id);
             int a = 1;
-
+            
             List<Model_BaiTap> model_CH = new List<Model_BaiTap>();
             foreach (var tv in DSCauHoi)
             {
@@ -237,7 +246,9 @@ namespace WebToiec.Controllers
                     HINH = ch.HINH,
                     AM_THANH = ch.AM_THANH,
                     TEXT = ch.TEXT,
-                    DAP_AN_DUNG = ch.DAP_AN_DUNG
+                    DAP_AN_DUNG = ch.DAP_AN_DUNG,
+                    SO_LUONG_DAP_AN = ch.SO_LUONG_DAP_AN,
+                    Part = Convert.ToInt32(Session["Part"])
                 };
                 model_CH.Add(model);
                 a++;
@@ -251,7 +262,13 @@ namespace WebToiec.Controllers
             DSBaiTap_Part_12(idBG);
             var DSCauHoi = Session["BaiTap_12"] as List<Model_BaiTap>;
             var item = DSCauHoi.FirstOrDefault(m=>m.ID_CauHoi == id);
-            return View(item);
+            if (item != null)
+                return View(item);
+            else
+            {
+                TempData["SuccesMessage"] = "Bài Giảng Chưa Có bài Tập";
+                return RedirectToAction("GetChiTietBaiGiang", new { id = idBG });
+            }
         }
         #endregion
 

@@ -25,13 +25,29 @@
                     <p class="lead mb40 btn btn-default">A</p>
                     <p class="lead mb40 btn btn-default">B</p>
                     <p class="lead mb40 btn btn-default">C</p>
-                    <p class="lead mb40 btn btn-default">D</p>
-
-                    <p class="lead mb40 btn btn-default">@Model.TEXT</p>
+                    <p class="lead mb40 btn btn-default" id="DapAn">D</p>
+                    <button onclick="noiDung()" class="lead mb40 btn btn-info">Text</button>
+                    <p id="text_noiDung" style="display:none"></p>
                     <br />
-                    @Html.ActionLink("Back", "BaiTapBG_Part_12", "Course", new { id = Model.ID_CauHoi - 1 }, new { @class = "btn btn-primary btn-green" })
-                    @Html.ActionLink("Next", "BaiTapBG_Part_12", "Course", new { id = Model.ID_CauHoi + 1 }, new { @class = "btn btn-primary btn-green" })
-
+                    @if (Model.ID_CauHoi == 1)
+                    {
+                        @Html.ActionLink("Next", "BaiTapBG_Part_12", "Course", new { id = Model.ID_CauHoi + 1 }, new { @class = "btn btn-primary btn-green" })
+                    }
+                    else
+                    {
+                        if (Model.ID_CauHoi == ViewBag.count)
+                        {
+                            @Html.ActionLink("Back", "BaiTapBG_Part_12", "Course", new { id = Model.ID_CauHoi - 1 }, new { @class = "btn btn-primary btn-green" })
+                            <p class="mb20">
+                                @Html.ActionLink("Go On Topic", "GetListChuDe", "Course", new { @class = "btn btn-primary btn-primary", onclick = "return confirm('Bạn Đã Hoàn Thành Chủ Đề');" })
+                            </p>
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Back", "BaiTapBG_Part_12", "Course", new { id = Model.ID_CauHoi - 1 }, new { @class = "btn btn-primary btn-green" })
+                            @Html.ActionLink("Next", "BaiTapBG_Part_12", "Course", new { id = Model.ID_CauHoi + 1 }, new { @class = "btn btn-primary btn-green" })
+                        }
+                    }
 
                 </div>
             </div>
@@ -39,3 +55,10 @@
     </div>
 </section>
 
+@section scripts{
+    <script>
+        function noiDung() {
+            document.getElementById("text_noiDung").innerHTML = @Model.TEXT;
+        }
+    </script>
+}

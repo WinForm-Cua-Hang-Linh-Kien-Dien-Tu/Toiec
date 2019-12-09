@@ -525,6 +525,14 @@
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\KhoaHoc.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Add_KhoaHoc.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\BaiGiang.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Add_BaiGiang.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Detail_BaiGiang.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Edit_BaiGiang.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Edit_KhoaHoc.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\TinTuc.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Add_TinTuc.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Edit_TinTuc.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />

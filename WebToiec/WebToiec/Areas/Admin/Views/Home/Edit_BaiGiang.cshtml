@@ -1,0 +1,79 @@
+﻿@model DAL.EF.BAIGIANG
+
+@{
+    ViewBag.Title = "Edit_BaiGiang";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h2>Edit_BaiGiang</h2>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID_BAIGIANG)
+
+    <div class="form-group">
+        Tên Bài Giảng
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TEN_BAI_GIANG, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TEN_BAI_GIANG, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Giảng Viên
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.GIANG_VIEN, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.GIANG_VIEN, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Khóa Học
+        <div class="col-md-10">
+            @Html.DropDownList("DSKhoaHoc", null, new { @class = "form-control form-control-lg" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Nội Dung Khóa Học
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.NOI_DUNG_BAI_GIANG, new { @class = "form-control", @rows = "10", @cols = "50", @id = "txt_vidu", @name = "txt_vidu" })
+            <script>CKEDITOR.replace('txt_vidu', { htmlEncodeOutput: true });</script>
+            @Html.ValidationMessageFor(model => model.NOI_DUNG_BAI_GIANG, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Video
+        <div class="col-md-10">
+            <input type="file" name="UpVideo" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        Part
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PART, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PART, "", new { @class = "text-danger" })
+            1 -> 7
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

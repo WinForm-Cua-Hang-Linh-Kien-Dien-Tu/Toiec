@@ -25,6 +25,8 @@ namespace DAL.EF
         [StringLength(10)]
         public string DAP_AN_DUNG { get; set; }
 
+        public int? SO_LUONG_DAP_AN { get; set; }
+
         public virtual BAIGIANG BAIGIANG { get; set; }
     }
 }

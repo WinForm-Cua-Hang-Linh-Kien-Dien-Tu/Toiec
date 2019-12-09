@@ -1,0 +1,61 @@
+﻿@model DAL.EF.TIN_TUC
+
+@{
+    ViewBag.Title = "Edit_TinTuc";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+@using (Html.BeginForm("Edit_TinTuc", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="card">
+    <div class="card-body">
+        <h2>Cập Nhật Tin Tức</h2>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            Tên Tin Tức
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TEN_TIN_TUC, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TEN_TIN_TUC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            Nội Dung
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.NOI_DUNG, new { @class = "form-control", @rows = "10", @cols = "50", @id = "txt_vidu", @name = "txt_vidu" })
+                <script>CKEDITOR.replace('txt_vidu', { htmlEncodeOutput: true });</script>
+                @Html.ValidationMessageFor(model => model.NOI_DUNG, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.NGUON_TIN_TUC, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NGUON_TIN_TUC, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NGUON_TIN_TUC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Hình Ảnh
+            <div class="col-md-10">
+                <div class="col-md-10">
+                    <input type="file" name="UpHinh" id="UpHinh" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+                <a href="@Url.Action("TinTuc","Home")" class="btn btn-danger">Back To List</a>
+            </div>
+        </div>
+    </div>
+    </div>
+    }
+

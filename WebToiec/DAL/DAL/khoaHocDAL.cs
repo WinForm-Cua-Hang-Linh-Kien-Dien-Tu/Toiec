@@ -24,7 +24,11 @@ namespace DAL.DAL
             {
                 k.GIA_TIEN = pma.GIA_TIEN;
                 k.THOI_GIAN = pma.THOI_GIAN;
-               
+                k.TEN_KH = pma.TEN_KH;
+                k.GIOI_THIEU = pma.GIOI_THIEU;
+                k.VIDEO_GIOI_THIEU = pma.VIDEO_GIOI_THIEU;
+                k.DANH_GIA = pma.DANH_GIA;
+                k.LOAI_KH = pma.LOAI_KH;
             }
             result = context.SaveChanges();
             return result;
@@ -38,12 +42,14 @@ namespace DAL.DAL
             result = context.SaveChanges();
             return result;
         }
+
         public List<KHOAHOC> GetList()
         {
             List<KHOAHOC> list = new List<KHOAHOC>();
             list = context.KHOAHOC.ToList();
             return list;
         }
+
 
         public List<KHOAHOC> GetListLimit()
         {
@@ -52,7 +58,7 @@ namespace DAL.DAL
             return list;
         }
 
-        public KHOAHOC GetDVByMa(int pMa)
+        public KHOAHOC GetDVByMa(int? pMa)
         {
             KHOAHOC result = new KHOAHOC();
             result = context.KHOAHOC.FirstOrDefault(m => m.ID_KH == pMa);

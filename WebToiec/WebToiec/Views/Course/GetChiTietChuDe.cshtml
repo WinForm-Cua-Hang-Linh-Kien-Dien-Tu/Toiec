@@ -77,7 +77,8 @@
                                     @Html.DisplayFor(modelItem => item.PHIEN_AM)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.VI_DU)
+                                   
+                                    @Html.Raw(HttpUtility.HtmlDecode(item.VI_DU))
                                 </td>
 
                             </tr>

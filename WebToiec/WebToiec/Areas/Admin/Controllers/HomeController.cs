@@ -18,6 +18,8 @@ namespace WebToiec.Areas.Admin.Controllers
         chuDeTuVungDAL _chuDeTuVungDAL = new chuDeTuVungDAL();
         chiTietTuVungDAL _chiTietTuVungDAL = new chiTietTuVungDAL();
         khoaHocDAL _khoaHocDAL = new khoaHocDAL();
+        baiGiangDAL _baiGiangDAL = new baiGiangDAL();
+        tinTucDAL _tinTucDAL = new tinTucDAL();
 
         // GET: Admin/Home
         public ActionResult Index()
@@ -180,6 +182,7 @@ namespace WebToiec.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Add_ChiTietTuVung(IEnumerable<HttpPostedFileBase> UpHinh, Model_TuVung model)
         {
             try
@@ -197,9 +200,11 @@ namespace WebToiec.Areas.Admin.Controllers
                         {
                             var fileName = Path.GetFileName(file1.FileName);
                             string path = Path.Combine(Server.MapPath("~/Resource/Voice/"), fileName); //Get the first file path and save to folder
+                            file1.SaveAs(path);
 
                             var fileName2 = Path.GetFileName(file2.FileName);
                             string path2 = Path.Combine(Server.MapPath("~/Resource/Image/"), fileName2);  //Get the second file path and save to folder
+                            file2.SaveAs(path2);
 
                             int maTV = Convert.ToInt32(Request.Form["DSTuVung"]);
                             int maCD = Convert.ToInt32(Request.Form["DSChuDe"]);
@@ -249,8 +254,8 @@ namespace WebToiec.Areas.Admin.Controllers
 
         public ActionResult Edit_ChiTietTuVung(int? id)
         {
-            Selected_ChuDe();
             Selected_TuVung();
+            Selected_ChuDe();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -265,6 +270,7 @@ namespace WebToiec.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Edit_ChiTietTuVung(IEnumerable<HttpPostedFileBase> UpHinh, CHI_TIET_TU_VUNG model)
         {
             try
@@ -282,17 +288,24 @@ namespace WebToiec.Areas.Admin.Controllers
                         {
                             var fileName = Path.GetFileName(file1.FileName);
                             string path = Path.Combine(Server.MapPath("~/Resource/Voice/"), fileName); //Get the first file path and save to folder
+                            file1.SaveAs(path);
 
                             var fileName2 = Path.GetFileName(file2.FileName);
                             string path2 = Path.Combine(Server.MapPath("~/Resource/Image/"), fileName2);  //Get the second file path and save to folder
+                            file2.SaveAs(path2);
 
-                            model.ID_TUVUNG = Convert.ToInt32(Request.Form["DSTuVung"]);
-                            model.MA_CHU_DE = Convert.ToInt32(Request.Form["DSChuDe"]);
+                            int maTV = Convert.ToInt32(Request.Form["DSTuVung"]);
+                            int maCD = Convert.ToInt32(Request.Form["DSChuDe"]);
+
+                            model.ID_TUVUNG = maTV;
+                            model.MA_CHU_DE = maCD;
                             model.PHAT_AM = fileName;
                             model.HIN_HANH = fileName2;
 
                             int kq = _chiTietTuVungDAL.Update(model);
                             TempData["SuccesMessage"] = "Save SuccessFully";
+                            Selected_ChuDe();
+                            Selected_TuVung();
                             return RedirectToAction("ChiTietTuVung", new { id = model.ID_TUVUNG });               
                         }
                         else
@@ -358,7 +371,7 @@ namespace WebToiec.Areas.Admin.Controllers
             {
                 items.Add(new SelectListItem { Text = item.TEN_CHU_DE, Value = item.MA_CHU_DE.ToString() });
             }
-            ViewBag.DSChuDe = items;
+            ViewData["DSChuDe"] = items;
         }
 
         /// <summary>
@@ -372,7 +385,18 @@ namespace WebToiec.Areas.Admin.Controllers
             {
                 items.Add(new SelectListItem { Text = item.TU, Value = item.ID_TUVUNG.ToString() });
             }
-            ViewBag.DSTuVung = items;
+            ViewData["DSTuVung"] = items;
+        }
+
+        public void Selected_KhoaHoc()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            var ds = _khoaHocDAL.GetList();
+            foreach (var item in ds)
+            {
+                items.Add(new SelectListItem { Text = item.TEN_KH, Value = item.ID_KH.ToString() });
+            }
+            ViewData["DSKhoaHoc"] = items;
         }
         #endregion
 
@@ -391,6 +415,7 @@ namespace WebToiec.Areas.Admin.Controllers
             {
                 fileName = Path.GetFileName(a.FileName).ToString();
                 string path = Path.Combine(Server.MapPath(url), fileName);
+                a.SaveAs(path);
                 return fileName;
             }
             else
@@ -413,17 +438,25 @@ namespace WebToiec.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add_KhoaHoc(Model_TuVung model)
+        [ValidateInput(false)]
+        public ActionResult Add_KhoaHoc(HttpPostedFileBase UpVideo, Model_KhoaHoc model)
         {
             if (ModelState.IsValid)
             {
+                string video = UpFile(UpVideo, "~/Resource/Video/");
                 KHOAHOC item = new KHOAHOC
                 {
-                    
+                    TEN_KH = model.TEN_KH,
+                    THOI_GIAN = model.THOI_GIAN,
+                    GIA_TIEN= model.GIA_TIEN,
+                    GIOI_THIEU = model.GIOI_THIEU,
+                    VIDEO_GIOI_THIEU= model.VIDEO_GIOI_THIEU,
+                    LOAI_KH = model.lOAI_KH,
+                    DANH_GIA = 1
                 };
                 int kq = _khoaHocDAL.Add(item);
                 TempData["SuccesMessage"] = "Create SuccessFully";
-                return RedirectToAction("TuVung");
+                return RedirectToAction("KhoaHoc");
             }
             return View(model);
         }
@@ -434,7 +467,7 @@ namespace WebToiec.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var item = _TuVungDAL.GetDVByMa(id);
+            var item = _khoaHocDAL.GetDVByMa(id);
             if (item == null)
             {
                 return HttpNotFound();
@@ -444,11 +477,14 @@ namespace WebToiec.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit_KhoaHoc(TUVUNG model)
-        {
-            int kq = _TuVungDAL.Update(model);
+        [ValidateInput(false)]
+        public ActionResult Edit_KhoaHoc(HttpPostedFileBase upVideo, KHOAHOC model)
+        { 
+            string video = UpFile(upVideo, "~/Resource/Video/");
+            model.VIDEO_GIOI_THIEU = video;
+            int kq = _khoaHocDAL.Update(model);
             TempData["SuccesMessage"] = "Save SuccessFully";
-            return RedirectToAction("TuVung");
+            return RedirectToAction("KhoaHoc");
         }
 
         public ActionResult Delete_KhoaHoc(int? id)
@@ -459,7 +495,194 @@ namespace WebToiec.Areas.Admin.Controllers
             }
             int kq = _khoaHocDAL.Delete(id);
             TempData["SuccesMessage"] = "Delete SuccessFully";
+            return RedirectToAction("BaiGiang");
+        }
+
+        public ActionResult Detail_KhoaHoc(int id)
+        {
+            var kq = _baiGiangDAL.GetList(id);
+            
             return RedirectToAction("TuVung");
+        }
+
+        #endregion
+
+        #region Bài Giảng
+
+        public ActionResult BaiGiang(int? id)
+        {
+            if (id == null)
+            {
+                var list_TV = _baiGiangDAL.GetList();
+                return View(list_TV);
+            }
+            else
+            {
+                var list_TV = _baiGiangDAL.GetList(id);
+                return View(list_TV);
+            }
+        }
+
+        public ActionResult Add_BaiGiang()
+        {
+            Selected_KhoaHoc();
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Add_BaiGiang(HttpPostedFileBase UpVideo, Model_BaiGiang model)
+        {
+            if (ModelState.IsValid)
+            {
+                string video = UpFile(UpVideo, "~/Resource/Video/");
+                int maKH = Convert.ToInt32(Request.Form["DSKhoaHoc"]);
+                BAIGIANG item = new BAIGIANG
+                {
+                    ID_KH = maKH,
+                    NOI_DUNG_BAI_GIANG = model.NOI_DUNG_BAI_GIANG,
+                    VIDEO = video,
+                    PART = model.PART,
+                    GIANG_VIEN = model.GIANG_VIEN,
+                    TEN_BAI_GIANG = model.TEN_BAI_GIANG,
+                    DANH_GIA = 1
+                };
+                int kq = _baiGiangDAL.Add(item);
+                TempData["SuccesMessage"] = "Create SuccessFully";
+                return RedirectToAction("BaiGiang");
+            }
+            return View(model);
+        }
+
+        public ActionResult Edit_BaiGiang(int? id)
+        {
+            Selected_KhoaHoc();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var item = _baiGiangDAL.GetDVByMa(id);
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(item);
+        }
+
+        [HttpPost]
+        public ActionResult Edit_BaiGiang(HttpPostedFileBase UpVideo, BAIGIANG model)
+        {
+            model.ID_KH= Convert.ToInt32(Request.Form["DSKhoaHoc"]);
+            int kq = _baiGiangDAL.Update(model);
+            TempData["SuccesMessage"] = "Save SuccessFully";
+            return RedirectToAction("BaiGiang");
+        }
+
+        public ActionResult Delete_BaiGiang(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            int kq = _baiGiangDAL.Delete(id);
+            TempData["SuccesMessage"] = "Delete SuccessFully";
+            return RedirectToAction("BaiGiang");
+        }
+
+        public ActionResult Detail_BaiGiang(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var kq = _baiGiangDAL.GetDVByMa(id);
+            Model_BaiGiang item = new Model_BaiGiang {
+                ID_BAIGIANG = kq.ID_BAIGIANG,
+                ID_KH = kq.ID_KH,
+                NOI_DUNG_BAI_GIANG = kq.NOI_DUNG_BAI_GIANG,
+                VIDEO = kq.VIDEO,
+                PART = kq.PART,
+                GIANG_VIEN = kq.GIANG_VIEN,
+                TEN_BAI_GIANG = kq.TEN_BAI_GIANG,
+                DANH_GIA = kq.DANH_GIA
+            };
+            return View(item);
+        }
+
+        #endregion
+
+        #region Tin Tức
+
+        public ActionResult TinTuc()
+        {
+            var list_TV = _tinTucDAL.GetList();
+
+            return View(list_TV);
+        }
+
+        public ActionResult Add_TinTuc()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Add_TinTuc(HttpPostedFileBase upHinh, Model_TinTuc model)
+        {
+            if (ModelState.IsValid)
+            {
+                string hinh = UpFile(upHinh, "~/Resource/Image/");
+                TIN_TUC item = new TIN_TUC
+                {
+                    TEN_TIN_TUC = model.TEN_TIN_TUC,
+                    NGAY_DANG = DateTime.Now,
+                    NOI_DUNG = model.NOI_DUNG,
+                    NGUON_TIN_TUC = model.NOI_DUNG,
+                    HINH_ANH = hinh
+                };
+                int kq = _tinTucDAL.Add(item);
+                TempData["SuccesMessage"] = "Create SuccessFully";
+                return RedirectToAction("TinTuc");
+            }
+            return View(model);
+        }
+
+        public ActionResult Edit_TinTuc(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var item = _tinTucDAL.GetDVByMa(id);
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(item);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Edit_TinTuc(HttpPostedFileBase UpHinh, TIN_TUC model)
+        {
+            string hinh = UpFile(UpHinh, "~/Resource/Image/");
+            model.HINH_ANH = hinh;
+            int kq = _tinTucDAL.Update(model);
+            TempData["SuccesMessage"] = "Save SuccessFully";
+            return RedirectToAction("TinTuc");
+        }
+
+        public ActionResult Delete_TinTuc(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            int kq = _tinTucDAL.Delete(id);
+            TempData["SuccesMessage"] = "Delete SuccessFully";
+            return RedirectToAction("TinTuc");
         }
 
         #endregion

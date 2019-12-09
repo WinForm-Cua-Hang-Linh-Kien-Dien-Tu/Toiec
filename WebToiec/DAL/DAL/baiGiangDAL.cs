@@ -35,7 +35,7 @@ namespace DAL.DAL
             return result;
         }
 
-        public int Delete(int pMa)
+        public int Delete(int? pMa)
         {
             int result = 0;
             BAIGIANG k = context.BAIGIANG.FirstOrDefault(m => m.ID_BAIGIANG == pMa);
@@ -51,7 +51,7 @@ namespace DAL.DAL
             return list;
         }
 
-        public List<BAIGIANG> GetList(int idkh)
+        public List<BAIGIANG> GetList(int? idkh)
         {
             List<BAIGIANG> list = new List<BAIGIANG>();
             list = context.BAIGIANG.Where(m => m.ID_KH == idkh).ToList();
@@ -65,7 +65,7 @@ namespace DAL.DAL
             return list;
         }
 
-        public BAIGIANG GetDVByMa(int pMa)
+        public BAIGIANG GetDVByMa(int? pMa)
         {
             BAIGIANG result = new BAIGIANG();
             result = context.BAIGIANG.FirstOrDefault(m => m.ID_BAIGIANG == pMa);
