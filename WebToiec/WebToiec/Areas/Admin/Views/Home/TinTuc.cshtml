@@ -1,0 +1,60 @@
+﻿@model IEnumerable<DAL.EF.TIN_TUC>
+
+@{
+    ViewBag.Title = "TinTuc";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h2>Danh Sách Tin Tức</h2>
+        <p>
+            @Html.ActionLink("Add New", "Add_TinTuc", "Home", new { @class = "btn btn-success" })
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    Tên Tin Tức
+                </th>
+                <th>
+                    Ngày Đăng
+                </th>
+                <th>
+                    Hình Ảnh
+                </th>
+                <th>Chức Năng</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TEN_TIN_TUC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGAY_DANG)
+                    </td>
+                    <td>
+                        <img src="~/Resource/Image/@item.HINH_ANH" alt="Image" class="img-rounded smoothie">
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detail", "Detail_TinTuc", "Home", new { id = item.ID }, new { @class = "btn btn-info" })
+                        @Html.ActionLink("Edit", "Edit_TinTuc", "Home", new { id = item.ID }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete", "Delete_TinTuc", "Home", new { id = item.ID }, new { onclick = "return confirm ('Are You Sure ???');", @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+</div>
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccesMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+    </script>
+}

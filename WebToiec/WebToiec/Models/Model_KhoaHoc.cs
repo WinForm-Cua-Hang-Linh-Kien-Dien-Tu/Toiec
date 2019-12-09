@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace WebToiec.Models
 {
@@ -24,6 +25,7 @@ namespace WebToiec.Models
         public string TEN_KH { get; set; }
 
         [DisplayName("Giới Thiệu")]
+        [AllowHtml]
         public string GIOI_THIEU { get; set; }
 
         [DisplayName("Video Giới Thiệu Khóa Học")]

@@ -1,37 +1,37 @@
-﻿@model IEnumerable<DAL.EF.KHOAHOC>
+﻿@model IEnumerable<DAL.EF.BAIGIANG>
 
 @{
-    ViewBag.Title = "KhoaHoc";
+    ViewBag.Title = "BaiGiang";
     Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
 }
 
 <div class="card">
     <div class="card-body">
-        <h2>Danh Sách Khóa Học</h2>
+        <h2>Danh Sách Bài Giảng</h2>
         <p>
             @Html.ActionLink("Add New", "Add_KhoaHoc", "Home", new { @class = "btn btn-success" })
         </p>
-        <table class="table table-striped table-condensed">
+        <table class="table">
             <tr>
                 <th>
                     ID
                 </th>
                 <th>
-                    Tên Khóa Học
+                    Tên Bài Giảng
                 </th>
                 <th>
-                    Giá Tiền
+                    Video
                 </th>
                 <th>
-                    Thời Gian
+                    Part
                 </th>
                 <th>
-                   Loại
-                </th>
-                <th>
-                   Đánh Giá
+                    Giảng Viên
                 </th>
 
+                <th>
+                    Đánh Giá
+                </th>
                 <th>Chức Năng</th>
             </tr>
 
@@ -39,41 +39,40 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ID_KH)
+                        @Html.DisplayFor(modelItem => item.ID_BAIGIANG)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.TEN_KH)
+                        @Html.DisplayFor(modelItem => item.TEN_BAI_GIANG)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.GIA_TIEN)
+                        @Html.DisplayFor(modelItem => item.VIDEO)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.THOI_GIAN) Tháng
+                        @Html.DisplayFor(modelItem => item.PART)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.LOAI_KH)
+                        @Html.DisplayFor(modelItem => item.GIANG_VIEN)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.DANH_GIA)<i class="mdi mdi-star"></i>
                     </td>
-                    <td >
-                        @Html.ActionLink("Detail", "BaiGiang", "Home", new { id = item.ID_KH }, new { @class = "btn btn-info" })
-                        @Html.ActionLink("Edit", "Edit_KhoaHoc", "Home", new { id = item.ID_KH }, new { @class = "btn btn-primary" })
-                        @Html.ActionLink("Delete", "Delete_KhoaHoc", "Home", new { id = item.ID_KH }, new { onclick = "return confirm ('Are You Sure ???');", @class = "btn btn-danger" })
+                    <td>
+                        @Html.ActionLink("Detail", "Detail_BaiGiang", "Home", new { id = item.ID_BAIGIANG }, new { @class = "btn btn-info btn-fw" })
+                        @Html.ActionLink("Edit", "Edit_BaiGiang", "Home", new { id = item.ID_BAIGIANG }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete", "Delete_BaiGiang", "Home", new { id = item.ID_BAIGIANG }, new { onclick = "return confirm ('Are You Sure ???');", @class = "btn btn-danger" })
                     </td>
                 </tr>
             }
 
         </table>
-        </div>
     </div>
-
-        @section scripts{
-            <script>
+</div>
+@section scripts{
+    <script>
         $(function () {
             var successMessage = '@TempData["SuccesMessage"]'
             if (successMessage != '')
                 alertify.success(successMessage);
         });
-            </script>
-        }
+    </script>
+}

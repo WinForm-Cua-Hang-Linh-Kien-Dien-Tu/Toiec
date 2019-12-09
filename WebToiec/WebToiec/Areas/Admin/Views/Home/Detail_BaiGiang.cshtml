@@ -1,0 +1,55 @@
+﻿@model WebToiec.Models.Model_BaiGiang
+
+@{
+    ViewBag.Title = "Detail_BaiGiang";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+
+<div class="card">
+    <h2>Chi Tiết Bài Giảng</h2>
+    <hr />
+    <dl class="card-body">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TEN_BAI_GIANG): @Html.DisplayFor(model => model.TEN_BAI_GIANG)
+        </dt>
+        <dd></dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GIANG_VIEN): @Html.DisplayFor(model => model.GIANG_VIEN)
+        </dt>
+        <dd></dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PART):  @Html.DisplayFor(model => model.PART)
+        </dt>
+        <dd></dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DANH_GIA): @Html.DisplayFor(model => model.DANH_GIA)
+        </dt>
+        <dd></dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NOI_DUNG_BAI_GIANG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOI_DUNG_BAI_GIANG)
+        </dd>
+        <dd></dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.VIDEO)
+        </dt>
+        <dd></dd>
+        <dd>
+            <video width="320" height="240" controls>
+                <source src="https://www.youtube.com/watch?v=_TL8OhqQnD8" type="video/mp4">
+            </video>
+        </dd>
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit_BaiGiang", "Home", new { id = Model.ID_BAIGIANG }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "BaiGiang","Home", new { @class = "btn btn-danger" })
+</p>

@@ -21,6 +21,9 @@
     <link rel="apple-touch-icon" sizes="152x152" href="~/assets/images/favicon/apple-touch-icon-152x152.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="~/assets/images/favicon/apple-touch-icon-180x180.png" />
 
+    <link href="~/Content/alertifyjs/alertify.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/alertify.min.css" rel="stylesheet" />
+
     <title>Scholar</title>
     <link href="~/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -72,7 +75,7 @@
                                 <li>
                                     @Html.ActionLink("Khóa Học", "IndexCourse", "Course")
                                 </li>
-                                
+
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Học<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
@@ -226,6 +229,9 @@
     <script src="~/assets/js/plugins.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script src="~/assets/js/init.js"></script>
-
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/alertify.min.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

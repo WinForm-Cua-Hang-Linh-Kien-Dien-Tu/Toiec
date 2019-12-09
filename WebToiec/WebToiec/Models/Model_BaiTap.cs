@@ -34,5 +34,7 @@ namespace WebToiec.Models
         public string DAPAN_A { get; set; }
 
         public string DAP_AN_DUNG { get; set; }
+
+        public int? SO_LUONG_DAP_AN { get; set; }
     }
 }

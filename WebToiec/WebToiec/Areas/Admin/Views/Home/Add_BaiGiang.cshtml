@@ -1,0 +1,79 @@
+﻿@model WebToiec.Models.Model_BaiGiang
+
+@{
+    ViewBag.Title = "Add_BaiGiang";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="card">
+    <div class="card-body">
+        <h2>Thêm Bài Giảng</h2>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TEN_BAI_GIANG, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TEN_BAI_GIANG, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TEN_BAI_GIANG, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GIANG_VIEN, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GIANG_VIEN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GIANG_VIEN, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_KH, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DSKhoaHoc", null, new { @class = "form-control form-control-lg" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NOI_DUNG_BAI_GIANG, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.NOI_DUNG_BAI_GIANG, new { @class = "form-control", @rows = "10", @cols = "50", @id = "txt_vidu", @name = "txt_vidu" })
+                <script>CKEDITOR.replace('txt_vidu', { htmlEncodeOutput: true });</script>
+                @Html.ValidationMessageFor(model => model.NOI_DUNG_BAI_GIANG, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VIDEO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="UpVideo" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PART, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PART, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PART, "", new { @class = "text-danger" })
+                1 -> 7
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+                @Html.ActionLink("Back to List", "BaiGiang", "Home", new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    </div>
+</div>
+  
+}

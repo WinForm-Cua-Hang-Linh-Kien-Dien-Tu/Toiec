@@ -23,7 +23,7 @@
                     <div class="frame-wrapper mb40">
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/C3jA2UB-O3g" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <p class="lead">@Model.GIOI_THIEU</p>
+                    <p class="lead">@Html.Raw(HttpUtility.HtmlDecode(Model.GIOI_THIEU))</p>
                     <p class="lead"><h3><strong>Danh Sách Bài Giảng Của Khóa Học</strong></h3></p>
                     @if (TempData["DSBaiGiangKH"] != null)
                     {
@@ -39,13 +39,13 @@
                 </div>
 
                 <div class="col-sm-3 col-sm-offset-1 sidebar">
-                   
+
                     <div class="course-fees widget mb40">
                         <h4 class="widget-title mb40">Giá Tiền</h4>
                         <div class="widget-content">
                             <span class="course-price">@Model.GIA_TIEN VND</span>
                             <span class="course-info">Thời Gian: <strong>@Model.THOI_GIAN Tháng</strong></span>
-                            <span class="course-info">Thời Gian: <strong>@Model.lOAI_KH Tháng</strong></span>
+                            <span class="course-info">@Model.LOAI_KH</span>
                             <span class="course-info">Students Passes: <strong>106</strong></span>
                             <span class="course-info">
                                 Đánh Giá:
@@ -57,7 +57,7 @@
                             @using (Html.BeginForm("ChiTietCourse", "Course", FormMethod.Post,
                                       new { id = Model.ID_KH }))
                             {
-                                <input type="submit" value="Đăng Ký Khóa Học" class="btn btn-success" onclick="return s();"/>
+                                <input type="submit" value="Đăng Ký Khóa Học" class="btn btn-success" onclick="return message();" />
                             }
                         </div>
                     </div>
@@ -66,12 +66,3 @@
         </div>
     </div>
 </section>
-
-<script type="text/javascript">
-           function s() {
-                var status = '@TempData["Message"]';
-               if (status) {
-                   alert(status.toString());
-                }
-            }
-</script>

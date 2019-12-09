@@ -41,7 +41,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.PHAT_AM, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <input type="file" name="UpHinh" />
+                    <input type="file" name="Hinh" id="Hinh"/>
                 </div>
             </div>
 
@@ -57,7 +57,7 @@
                 @Html.LabelFor(model => model.VI_DU, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.TextAreaFor(model => model.VI_DU, new { @class = "form-control", @rows = "10", @cols = "50", @id = "txt_vidu", @name = "txt_vidu" })
-                    <script>CKEDITOR.replace('txt_vidu');</script>
+                    <script>CKEDITOR.replace('txt_vidu', { htmlEncodeOutput: true});</script>
                     @Html.ValidationMessageFor(model => model.VI_DU, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -70,14 +70,6 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.TheLoai, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.TheLoai, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.TheLoai, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Create" class="btn btn-success" onclick="return message();" />
                     @Html.ActionLink("Back To List", "ToanBoChiTietTuVung", "Home", new { @class = "btn btn-danger" })
@@ -86,12 +78,3 @@
         </div>
         </div>
 }
-
-<script type="text/javascript">
-           function message() {
-                var status = '@TempData["SuccesMessage"]';
-               if (status) {
-                   alert(status.toString());
-                }
-            }
-</script>

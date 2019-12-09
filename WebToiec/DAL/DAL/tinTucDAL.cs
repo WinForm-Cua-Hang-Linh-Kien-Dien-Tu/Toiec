@@ -23,7 +23,7 @@ namespace DAL.DAL
             if (k != null)
             {
                 k.TEN_TIN_TUC = pma.TEN_TIN_TUC;
-                k.NGAY_DANG = pma.NGAY_DANG;
+                k.NGAY_DANG = DateTime.Now;
                 k.NOI_DUNG = pma.NOI_DUNG;
                 k.NGUON_TIN_TUC = pma.NGUON_TIN_TUC;
                 k.HINH_ANH = pma.HINH_ANH;
@@ -33,7 +33,7 @@ namespace DAL.DAL
             return result;
         }
 
-        public int Delete(int pMa)
+        public int Delete(int? pMa)
         {
             int result = 0;
             TIN_TUC k = context.TIN_TUC.FirstOrDefault(m => m.ID == pMa);
@@ -63,7 +63,7 @@ namespace DAL.DAL
             return list;
         }
 
-        public TIN_TUC GetDVByMa(int pMa)
+        public TIN_TUC GetDVByMa(int? pMa)
         {
             TIN_TUC result = new TIN_TUC();
             result = context.TIN_TUC.FirstOrDefault(m => m.ID == pMa);

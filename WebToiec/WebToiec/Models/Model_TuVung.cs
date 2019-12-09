@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace WebToiec.Models
 {
@@ -37,6 +38,7 @@ namespace WebToiec.Models
         public string PHIEN_AM { get; set; }
 
         [DisplayName("Ví Dụ")]
+        [AllowHtml]
         [Column(TypeName = "text")]
         public string VI_DU { get; set; }
 

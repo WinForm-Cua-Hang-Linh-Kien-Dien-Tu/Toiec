@@ -5,10 +5,11 @@
     Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
 }
 
-<h2>ChiTietTuVung</h2>
+
 
 <div class="card">
     <div class="card-body">
+        <h2>Chi Tiết Từ Vựng</h2>
         <p>
             @Html.ActionLink("Add Vocabulary in Topic", "Add_ChiTietTuVung", "Home", new { @class = "btn btn-success" })
             @Html.ActionLink("List Detail Vocabulary", "ToanBoChiTietTuVung", "Home", new { @class = "btn btn-secondary" })
@@ -40,37 +41,37 @@
 
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tu_Vung)
-                </td>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tu_Vung)
+                    </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.TEN_CHU_DE)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NGHIA_CUA_TU)
-                </td>
-                <td>
-                    <audio style="display:none" id="player" controls>
-                        <source src="~/Resource/Voice/@item.PHAT_AM" type="audio/mpeg">
-                    </audio>
-                    <div>
-                        <a class="btn btn-gradient-primary btn-rounded" onclick="document.getElementById('player').play()"><i class='mdi mdi-play-circle'></i></a>
-                    </div>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PHIEN_AM)
-                </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TEN_CHU_DE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGHIA_CUA_TU)
+                    </td>
+                    <td>
+                        <audio style="display:none" id="player" controls>
+                            <source src="~/Resource/Voice/@item.PHAT_AM" type="audio/mpeg">
+                        </audio>
+                        <div>
+                            <a class="btn btn-gradient-primary btn-rounded" onclick="document.getElementById('player').play()"><i class='mdi mdi-play-circle'></i></a>
+                        </div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PHIEN_AM)
+                    </td>
 
-                <td>
-                    <img src="~/assets/images/blog-3.jpg" alt="Image" class="img-rounded smoothie">
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit_ChiTietTuVung", "Home", new { id = item.ID }, new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Delete", "Delete_ChiTietTuVung", "Home", new { id = item.ID }, new { onclick = "return confirm ('Are You Sure ???');", @class = "btn btn-danger" })
-                </td>
-            </tr>
+                    <td>
+                        <img src="~/Resource/Image/@item.HIN_HANH" alt="Image" class="img-rounded smoothie">
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit_ChiTietTuVung", "Home", new { id = item.ID }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete", "Delete_ChiTietTuVung", "Home", new { id = item.ID }, new { onclick = "return confirm ('Are You Sure ???');", @class = "btn btn-danger" })
+                    </td>
+                </tr>
             }
 
         </table>
@@ -84,4 +85,6 @@
                 alertify.success(successMessage);
         });
     </script>
+
+
 }

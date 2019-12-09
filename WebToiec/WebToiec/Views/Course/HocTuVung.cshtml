@@ -22,15 +22,15 @@
                             <h2 class="mt0 mb40">@Model.Tu_Vung</h2>
                             <p class="mb20">@Model.PHIEN_AM (@Model.TheLoai)</p>
                             <p class="mb20">
-                                <audio style="display:none" id="player" controls>
+                                <audio style="display:none" id="player" controls autoplay>
                                     <source src="~/Resource/Voice/@Model.PHAT_AM" type="audio/mpeg">
                                 </audio>
                                 <div>
-                                    <a class="btn btn-gradient-primary btn-rounded" onclick="document.getElementById('player').play()"><i class='mdi mdi-play-circle'></i></a>
+                                    <a class="btn btn-gradient-primary btn-rounded btn-fw" onclick="document.getElementById('player').play()"><i class='fa fa-volume-up fa-2x'></i></a>
                                 </div>
                             </p>
                             <p class="mb20">@Model.NGHIA_CUA_TU</p>
-                            <p class="mb20">@Model.VI_DU</p>
+                            <p class="mb20"> @Html.Raw(HttpUtility.HtmlDecode(Model.VI_DU))</p>
                             @if (Model.ID_TuVung == 1)
                             {
                                 @Html.ActionLink("Next", "HocTuVung", "Course", new { id = Model.ID_TuVung + 1 }, new { @class = "btn btn-primary btn-green" })
@@ -39,12 +39,15 @@
                             {
                                 if (Model.ID_TuVung == ViewBag.count)
                                 {
-                                    @Html.ActionLink("Back", "HocTuVung", "Course", new { id = Model.ID_TuVung - 1 }, new { @class = "btn btn-primary btn-green" })
+                                    @Html.ActionLink("Back", "HocTuVung", "Course", new { id = Model.ID_TuVung - 1 }, new { @class = "btn btn-primary btn-green"})
+                                <p class="mb20">
+                                    @Html.ActionLink("Go On Topic", "GetListChuDe", "Course", new { @class = "btn btn-primary btn-primary", onclick = "return confirm('Bạn Đã Hoàn Thành Chủ Đề');" })
+                                </p>
                                 }
                                 else
                                 {
-                                @Html.ActionLink("Back", "HocTuVung", "Course", new { id = Model.ID_TuVung - 1 }, new { @class = "btn btn-primary btn-green" })
-                                @Html.ActionLink("Next", "HocTuVung", "Course", new { id = Model.ID_TuVung + 1 }, new { @class = "btn btn-primary btn-green" })
+                                    @Html.ActionLink("Back", "HocTuVung", "Course", new { id = Model.ID_TuVung - 1 }, new { @class = "btn btn-primary btn-green" })
+                                    @Html.ActionLink("Next", "HocTuVung", "Course", new { id = Model.ID_TuVung + 1 }, new { @class = "btn btn-primary btn-green" })
                                 }
                             }
                         </div>
